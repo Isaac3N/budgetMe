@@ -1,0 +1,137 @@
+.budgetme-navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2rem 6rem;
+}
+
+.budgetme-navbar-links {
+	flex: 1;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.budgetme-navbar-links-logo {
+	margin-right: 2rem;
+}
+
+.budgetme-navbar-links-logo p {
+	width: 62.56px;
+	height: 25.02px;
+	font-family: "Red Hat Mono", monospace;
+	color: #03a9f4;
+	font-weight: 800;
+	font-size: 20px;
+}
+
+.budgetme-navbar-links-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.budgetme-navbar-sign {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.budgetme-navbar-links-container p,
+.budgetme-navbar-sign p,
+.budgetme-navbar-menu-container p {
+	color: #03a9f4;
+	font-family: var(--font-family);
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 25px;
+	text-transform: capitalize;
+	margin: 0 1rem;
+	cursor: pointer;
+}
+
+.budgetme-navbar-sign button,
+.budgetme-navbar-menu-container button {
+	padding: 0.5rem 1rem;
+	color: #fff;
+
+	font-family: var(--font-family);
+	font-weight: 500;
+
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 25px;
+
+	background: #03a9f4;
+	border-radius: 5px;
+	border: 0;
+	outline: none;
+	cursor: pointer;
+}
+
+.budgetme-navbar-menu {
+	margin-left: 1rem;
+	display: none;
+	position: relative;
+}
+
+.budgetme-navbar-menu svg {
+	cursor: pointer;
+}
+
+.budgetme-navbar-menu-container {
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	flex-direction: column;
+
+	text-align: end;
+	background: #fff;
+	padding: 2rem;
+	position: absolute;
+	top: 40px;
+	right: 0;
+	margin-top: 1rem;
+	min-width: 210px;
+	border-radius: 5px;
+	box-shadow: 0 0 5 rgba(0, 0, 0, 0.2);
+}
+
+.budgetme-navbar-menu-container p {
+	margin: 1rem 0;
+}
+
+.budgetme-navbar-menu-container-links-sign {
+	display: none;
+}
+
+@media screen and (max-width: 1050px) {
+	.budgetme-navbar-links-container {
+		display: none;
+	}
+
+	.budgetme-navbar-menu {
+		display: flex;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.budgetme-navbar {
+		padding: 2rem 4rem;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.budgetme-navbar {
+		padding: 2rem;
+	}
+	.budgetme-navbar-sign {
+		display: none;
+	}
+	.budgetme-navbar-menu-container {
+		top: 20px;
+	}
+	.budgetme-navbar-menu-container-links-sign {
+		display: block;
+	}
+}

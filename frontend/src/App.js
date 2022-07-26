@@ -15,10 +15,11 @@ import {
 
 const App = () => {
 	return (
-		<div>
-			<h1>Budget Me</h1>
-			<Navbar />
-			<Header />
+		<div className="App">
+			<div className="gradient-bg">
+				<Navbar />
+				<Header />
+			</div>
 			<Hackathon />
 			<WhatIsBudgetMe />
 			<WhyBudget />

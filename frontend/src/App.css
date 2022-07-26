@@ -14,22 +14,75 @@ a {
 	text-decoration: none;
 }
 
-.gradient__bg {
-	background-color: #fee2f8;
-	background-image: linear-gradient(315deg, #fee2f8 0%, #dcf8ef 74%);
+.gradient-bg {
+	background-color: #fff;
+	background: radial-gradient(
+		circle at 3% 25%,
+		#fee2f8 0%,
+		#dcf8ef 20%,
+		#fff 45%
+	);
 }
 
-.gradient__text {
+.gradient-text {
 	background: var(--gradient-text);
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
-.section__padding {
+.section-padding {
 	padding: 4rem 6rem;
 }
 
-.section__margin {
+.section-margin {
 	margin: 4rem 6rem;
+}
+
+.scale-up-center {
+	-webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
+		both;
+	animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@-webkit-keyframes scale-up-center {
+	0% {
+		-webkit-transform: scale(0.5);
+		transform: scale(0.5);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@keyframes scale-up-center {
+	0% {
+		-webkit-transform: scale(0.5);
+		transform: scale(0.5);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.section-padding {
+		padding: 4rem;
+	}
+
+	.section-margin {
+		margin: 4rem;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.section-padding {
+		padding: 4rem 2rem;
+	}
+
+	.section-margin {
+		margin: 4rem 2rem;
+	}
 }
