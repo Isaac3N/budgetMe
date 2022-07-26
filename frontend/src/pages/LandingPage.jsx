@@ -1,9 +1,33 @@
 import React from 'react'
 import "./landing-page.css"
 
+import {
+	Blog,
+	CTA,
+	FAQ,
+	Footer,
+	Hackathon,
+	Header,
+	Navbar,
+	WhatIsBudgetMe,
+	WhyBudget,
+} from "../components/base"
+
 const LandingPage = () => {
   return (
-    <div>LandingPage</div>
+    <div>
+      <div className="gradient-bg">
+				<Navbar />
+				<Header />
+			</div>
+			<Hackathon />
+			<WhatIsBudgetMe />
+			<WhyBudget />
+			<FAQ />
+			<CTA />
+			<Blog />
+			<Footer />
+    </div>
   )
 }
 

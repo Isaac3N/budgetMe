@@ -1,32 +1,12 @@
 import React from "react";
 import "./App.css";
 
-import {
-	Blog,
-	CTA,
-	FAQ,
-	Footer,
-	Hackathon,
-	Header,
-	Navbar,
-	WhatIsBudgetMe,
-	WhyBudget,
-} from "./components/base";
+import LandingPage from "./pages/LandingPage";
 
 const App = () => {
 	return (
 		<div className="App">
-			<div className="gradient-bg">
-				<Navbar />
-				<Header />
-			</div>
-			<Hackathon />
-			<WhatIsBudgetMe />
-			<WhyBudget />
-			<FAQ />
-			<CTA />
-			<Blog />
-			<Footer />
+			<LandingPage />
 		</div>
 	);
 };
