@@ -37,11 +37,11 @@ const faqQuestions = [
 
 const FAQ = () => {
   return (
-    <div className='gpt3__possibility section-padding' id="possibility">
-      <div className='gpt3__possibility-image'>
+    <div className='budgetme-faq section-padding' id="possibility">
+      <div className='budgetme-faq-image'>
         <img src={PossibilityImage} alt="possibility" />
       </div>
-      <div className="gpt3__possibility-content">
+      <div className="budgetme-faq-content">
         <h4>Not sure whether to try it yet? Well Here is our Frequently asked Questions! </h4>
         <h1 className='gradient-text'>
           Here is our Frequently Asked Questions 
