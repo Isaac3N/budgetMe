@@ -77,6 +77,10 @@
 	margin-top: 0.5rem;
 }
 
+.footer-message {
+	font-family: var(--font-family);
+}
+
 @media screen and (max-width: 850px) {
 	.budgetme-what-is-budgetme-heading {
 		flex-direction: column;

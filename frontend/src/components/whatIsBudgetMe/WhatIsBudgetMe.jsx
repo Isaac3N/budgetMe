@@ -26,6 +26,9 @@ const WhatIsBudgetMe = () => {
                                                    So we integrated a goal milestone app into our project so we can keep track of those moments and look back on them when need arises"/>
         <Feature title="Curated Articles" text="We organize the most relevant and up to date financial articles to keep your financially ready."/>
       </div>
+      <div className='footer-message gradient-text'>
+        <p>All of These Features Accessible to you Completely Free of Charge.</p>
+      </div>
     </div>
   )
 }
