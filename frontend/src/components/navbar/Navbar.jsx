@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {RiMenu3Line, RiCloseLine } from "react-icons/ri"
-// import logo from "../../assets/logo.svg"
 import "./navbar.css"
+import {Link} from "react-router-dom"
 
 
 const MenuItems=()=> (
@@ -10,7 +10,7 @@ const MenuItems=()=> (
     <p><a href="#what-is-budget-me">What is BudgetMe</a></p>
     <p><a href="#dashboard">Dashboard</a></p>
     <p><a href="#FAQ">FAQ</a></p>
-    <p><a href="#articles">Articles</a></p>
+    <p><Link to={"/articles"}>Articles</Link></p>
 
   </>
 )

@@ -63,11 +63,13 @@
 	flex-direction: column;
 }
 
-.budgetme-footer-links-logo img {
+.budgetme-footer-links-logo h3 {
 	width: 118px;
 	height: 30px;
 
 	margin-bottom: 1rem;
+	font-family: "Red Hat Mono", monospace;
+	color: #03a9f4;
 }
 
 .budgetme-footer-links-logo p {

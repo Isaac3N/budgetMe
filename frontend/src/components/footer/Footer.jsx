@@ -13,7 +13,7 @@ const Footer = () => (
 
     <div className="budgetme-footer-links">
       <div className="budgetme-footer-links-logo">
-        {/* <img src={gpt3Logo} alt="gpt3-logo" /> */}
+        <h3>BUDGETME</h3>
         <p>ndubuisisaac@gmail.com, <br /> All Rights Reserved</p>
       </div>
       <div className="budgetme-footer-links-div">
@@ -38,7 +38,7 @@ const Footer = () => (
     </div>
 
     <div className="budgetme-footer-copyright">
-      <p>@2021 GPT-3. All rights reserved.</p>
+      <p>@2022 BudgetMe. All rights reserved.</p>
     </div>
   </div>
 );
