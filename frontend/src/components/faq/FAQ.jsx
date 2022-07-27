@@ -44,7 +44,7 @@ const FAQ = () => {
       <div className="budgetme-faq-content">
         <h4>Not sure whether to try it yet? Well Here is our Frequently asked Questions! </h4>
         <h1 className='gradient-text'>
-          Here is our Frequently Asked Questions 
+          Frequently Asked Questions 
         </h1>
         <div className='section-margin'>
           {faqQuestions.map((question)=>(
