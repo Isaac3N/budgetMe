@@ -1,0 +1,22 @@
+.budgetme-brand {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.budgetme-brand-image {
+	flex: 1;
+	max-width: 150px;
+	min-width: 120px;
+	height: 50px;
+	margin: 2rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.budgetme-xicon {
+	height: 30px;
+}
