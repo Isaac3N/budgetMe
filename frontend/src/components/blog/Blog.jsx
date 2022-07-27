@@ -1,27 +1,50 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Article from '../../components/article/Article'
-
+import axios from "axios"
 import "./blog.css"
-import { blog01, blog02, blog03, blog04, blog05 } from './imports'
+
 
 const Blog = () => {
+  const [articles, setArticles] = useState([]);
+  useEffect(()=>{
+    const getArticles = async () => {
+      const response = await axios.get (
+        "https://newsapi.org/v2/everything?q=finance&savings%sortBy=popularity&apiKey=e7b43ea17cb241cbaf20d6049e24c812"
+      )
+      console.log(response)
+      setArticles(response.data.articles)
+    }
+    getArticles()
+  }, [])
+  const size =6
+  const items = articles.slice(0, size)
+  console.log(items)
   return (
-    <div className='gpt3__blog section-padding' id="blog">
-      <div className='gpt3__blog-heading'>
+    <div className='budgetme-blog section-padding' id="blog">
+      <div className='budgetme-blog-heading'>
         <h1 className='gradient-text'>
-          A lot is happening, We are blogging about it.
+          Our Curated Feed to Keep you Financially Updated 
         </h1>
       </div>
-      <div className="gpt3__blog-container">
-        <div className="gpt3__blog-container_groupA">
-          <Article imgUrl={blog01} date="Sep 19 2022" title=" GPT-3 and Open AI is the future. Let us explore how it is built!"/>
+      
+      <div className="budgetme-blog-container">
+        <div className="budgetme-blog-container-groupB">
+          {
+            items.map((a)=>{
+              return (
+                <Article 
+                  author ={a.author}
+                  title={a.title}
+                  urlToImage={a.urlToImage}
+                  description={a.description}
+                  url ={a.url}
+                  
+                />
+              )
+            })
+          }
         </div>
-        <div className="gpt3__blog-container_groupB">
-          <Article imgUrl={blog02} date="Sep 19 2022" title=" GPT-3 and Open AI is the future. Let us explore how it is built!"/> 
-          <Article imgUrl={blog03} date="Sep 19 2022" title=" GPT-3 and Open AI is the future. Let us explore how it is built!"/> 
-          <Article imgUrl={blog04} date="Sep 19 2022" title=" GPT-3 and Open AI is the future. Let us explore how it is built!"/>
-          <Article imgUrl={blog05} date="Sep 19 2022" title=" GPT-3 and Open AI is the future. Let us explore how it is built!"/> 
-        </div>
+      
       </div>
     </div>
   )

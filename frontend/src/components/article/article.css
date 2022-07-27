@@ -27,11 +27,28 @@
 	height: 100%;
 }
 
+.budgetme-blog-container-article-content a {
+	font-family: var(--font-family);
+	font-weight: bold;
+	font-size: 11.649px;
+	line-height: 35px;
+	color: #ff8a71;
+}
+
 .budgetme-blog-container-article-content p {
 	font-family: var(--font-family);
 	font-weight: bold;
 	font-size: 11.649px;
 	line-height: 35px;
+	color: white;
+}
+
+.budgetme-blog-container-article-content h5 {
+	font-family: var(--font-family);
+	font-weight: bold;
+	font-size: 11.649px;
+	line-height: 35px;
+	margin-bottom: 1rem;
 	color: white;
 }
 
@@ -41,13 +58,12 @@
 	font-weight: 800;
 	font-size: 25.11px;
 	line-height: 30px;
-	color: white;
 
-	margin-bottom: 5rem;
+	margin-bottom: 2rem;
 	cursor: pointer;
 }
 
-.budgetme-blog-container-article-content p:last-child {
+.budgetme-blog-container-article-content a:last-child {
 	cursor: pointer;
 }
 

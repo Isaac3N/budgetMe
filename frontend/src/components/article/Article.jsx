@@ -1,18 +1,22 @@
 import React from 'react'
 import "./article.css"
 
-const Article = ({imgUrl, date, title}) => {
+const Article = ({ title, description, url, urlToImage, publishedAt, author }) => {
   return (
     <div className='budgetme-blog-container-article'>
       <div className='budgetme-blog-container-article-image'>
-        <img src={imgUrl} alt="blogimage"/> 
+        <img src={urlToImage} alt="blogimage"/> 
       </div>
       <div className="budgetme-blog-container-article-content">
         <div>
-          <p>{date}</p>
-          <h3>{title}</h3>
+          <div >
+            <p>{publishedAt}</p><p>Author: {author}</p>
+          </div>
+          <h3 className='gradient-text'>{title}</h3>
+          <h5>{description}</h5>
+
         </div>
-        <p>Read Full Article </p>
+        <a target="_blank" rel="noreferrer"  href={url}>Read Full Article</a>
       </div>
     </div>
   )
