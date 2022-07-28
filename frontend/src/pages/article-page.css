@@ -44,4 +44,9 @@
 		font-size: 36px;
 		line-height: 42px;
 	}
+
+	.paginationBttns a {
+		padding: 2px;
+		margin: 2px;
+	}
 }

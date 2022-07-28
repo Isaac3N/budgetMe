@@ -28,7 +28,7 @@ const Article = ({ title, description, url, urlToImage, publishedAt, author }) =
             }}
             onClick={() => console.log("shared successfully!")}
           >
-            <AiOutlineShareAlt color='white'/>
+            <AiOutlineShareAlt size={27} color='white'/>
           </RWebShare>
       </div>
       </div>
