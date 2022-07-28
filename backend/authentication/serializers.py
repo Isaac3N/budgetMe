@@ -1,4 +1,3 @@
-
 from rest_framework import serializers
 from .models import User
 from django.contrib import auth
@@ -42,7 +41,7 @@ class EmailVerificationSerializer(serializers.ModelSerializer):
 
 
 class LoginSerializer(serializers.ModelSerializer):
-    email = serializers.EmailField(max_length=255, min_length=3)
+    email = serializers.EmailField(max_length=255, min_length=5)
     password = serializers.CharField(
         max_length=68, min_length=6, write_only=True)
     username = serializers.CharField(
@@ -75,7 +74,8 @@ class LoginSerializer(serializers.ModelSerializer):
         if not user:
             raise AuthenticationFailed('Invalid credentials, try again')
         if not user.is_active:
-            raise AuthenticationFailed('Account disabled, contact admin')
+            raise AuthenticationFailed(
+                'Something went Wrong, Try agaiin Later')
         if not user.is_verified:
             raise AuthenticationFailed('Email is not verified')
 
