@@ -1,6 +1,4 @@
 import React from 'react'
-import "./landing-page.css"
-
 
 import {
 	Blog,

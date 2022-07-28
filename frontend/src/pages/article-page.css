@@ -1,0 +1,15 @@
+.budgetme-blog-heading h2 {
+	font-size: 42px;
+	line-height: 50px;
+	font-family: var(--font-family);
+	font-weight: 800;
+	align-items: center;
+	text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+	.budgetme-blog-heading h2 {
+		font-size: 36px;
+		line-height: 42px;
+	}
+}

@@ -23,7 +23,7 @@ const Header = () => {
         
       </div>
       <div className="budgetme-header-image">
-        <img src={budget} alt="ai" />
+        <img src={budget} alt="budget" />
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 import React from 'react'
-import "./article.css"
+import "../article/article.css"
 
-const Article = ({ title, description, url, urlToImage, publishedAt, author }) => {
+const Card = ({ title, description, url, urlToImage, publishedAt, author }) => {
   return (
     <div className='budgetme-blog-container-article'>
       <div className='budgetme-blog-container-article-image'>
@@ -22,4 +22,4 @@ const Article = ({ title, description, url, urlToImage, publishedAt, author }) =
   )
 }
 
-export default Article
+export default Card

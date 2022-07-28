@@ -1,16 +1,14 @@
 import React, {useState, useEffect} from 'react'
-import "../components/blog/blog.css"
-import BlogImage from "../assets/blog.webp"
-import "./article-page.css"
-
+import Article from "../components/article/Article"
 import axios from "axios"
+import "../components/blog/blog.css"
 import Box from "@mui/material/Box"
 import LinearProgress from "@mui/material/LinearProgress"
 
-import { Article, Navbar } from '../components/base'
 
 
-const ArticlePage = () => {
+
+const Blog = () => {
   const [articles, setArticles] = useState([]);
 	useEffect(() => {
 		const getArticles = async () => {
@@ -22,35 +20,18 @@ const ArticlePage = () => {
 		};
 		getArticles();
 	}, []);
-  const size =10
+  const size =6
   const items = articles.slice(0, size)
   console.log(items)
   return (
-    <div>
-      <Navbar/>
-      <div className='budgetme-header section-padding' id="home">
-        <div className="budgetme-header-content">
-          <h1 className="gradient-text">
-            The Latest and Trendiest Finance and Economic Articles brought to your Doorstep.
-          </h1>
-          <p>"The more that you read, the more things you will know. The more that you learn, the more places you’ll go.”-- Dr Seuss</p>
-          
-        </div>
-
-        <div className="budgetme-header-image">
-          <img src={BlogImage} alt="blogging" /> 
-        </div>
-        
+    <div className='budgetme-blog section-padding' id="blog">
+      <div className='budgetme-blog-heading'>
+        <h1 className='gradient-text'>
+          Our Curated Feed to Keep you in the Know 
+        </h1>
       </div>
-
-      <div className='budgetme-blog-heading section-padding'>
-        <h2 className='gradient-text'>
-          Articles Curated with Love 💙 (but mostly newsapi.org)
-        </h2>
-      </div>
-
-      <div className="budgetme-blog-container section-padding">
-
+      
+      <div className="budgetme-blog-container">
         <div className="budgetme-blog-container-groupB">
 
         { (articles !== []) ?  items.map((a)=>{
@@ -74,14 +55,8 @@ const ArticlePage = () => {
         </div>
       
       </div>
-
-      </div>
-      
-          
-
-
-
+    </div>
   )
 }
 
-export default ArticlePage
+export default Blog
