@@ -4,7 +4,6 @@ import axios from "axios"
 import "./blog.css"
 
 
-
 const Blog = () => {
   const [articles, setArticles] = useState([]);
 	useEffect(() => {

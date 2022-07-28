@@ -1,5 +1,7 @@
 import React from 'react'
 import "./article.css"
+import { RWebShare } from "react-web-share";
+import {AiOutlineShareAlt} from "react-icons/ai"
 
 const Article = ({ title, description, url, urlToImage, publishedAt, author }) => {
   return (
@@ -17,6 +19,18 @@ const Article = ({ title, description, url, urlToImage, publishedAt, author }) =
 
         </div>
         <a target="_blank" rel="noreferrer"  href={url}>Read Full Article</a>
+        <div>
+          <RWebShare
+            data={{
+              text: description,
+              url: url,
+              title: title,
+            }}
+            onClick={() => console.log("shared successfully!")}
+          >
+            <AiOutlineShareAlt color='white'/>
+          </RWebShare>
+      </div>
       </div>
     </div>
   )

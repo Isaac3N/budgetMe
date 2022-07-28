@@ -88,11 +88,6 @@ const ArticlePage = () => {
       </div>
 
       </div>
-      
-          
-
-
-
   )
 }
 

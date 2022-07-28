@@ -6,7 +6,7 @@ import {Link} from "react-router-dom"
 
 const MenuItems=()=> (
   <>
-    <p><a href="#home">Home</a></p>
+    <p><Link to={"/"}>Home</Link></p>
     <p><a href="#what-is-budget-me">What is BudgetMe</a></p>
     <p><a href="#dashboard">Dashboard</a></p>
     <p><a href="#FAQ">FAQ</a></p>
@@ -21,8 +21,8 @@ const Navbar = () => {
   return (
     <div className="budgetme-navbar">
       <div className="budgetme-navbar-links">
-      < div className="budgetme-navbar-links-logo">
-          <p>BUDGET ME</p>
+        <div className="budgetme-navbar-links-logo">
+          <p><Link to={"/"}>BUDGET ME</Link></p>
         </div>
         <div className="budgetme-navbar-links-container">
           <MenuItems/>
