@@ -19,7 +19,7 @@ const Blog = () => {
 	}, []);
   const size =6
   const items = articles.slice(0, size)
-  console.log(items)
+
   return (
     <div className='budgetme-blog section-padding' id="blog">
       <div className='budgetme-blog-heading'>

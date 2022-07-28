@@ -7,6 +7,37 @@
 	text-align: center;
 }
 
+.paginationBttns {
+	height: 40px;
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.paginationBttns a {
+	margin: 5px;
+	border-radius: 1px;
+	border: 1px solid #ff8a71;
+	color: #ff8a71;
+	cursor: pointer;
+}
+
+.paginationBttns a:hover {
+	color: white;
+	background-color: #ff8a71;
+}
+
+.paginationActive a {
+	color: white;
+	background-color: #ff8a71;
+}
+
+.paginationDisabled a {
+	color: grey;
+	background-color: grey;
+}
+
 @media screen and (max-width: 700px) {
 	.budgetme-blog-heading h2 {
 		font-size: 36px;

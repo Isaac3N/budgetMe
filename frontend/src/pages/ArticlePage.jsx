@@ -2,15 +2,13 @@ import React, {useState, useEffect} from 'react'
 import "../components/blog/blog.css"
 import BlogImage from "../assets/blog.webp"
 import "./article-page.css"
-
 import axios from "axios"
-import Box from "@mui/material/Box"
-import LinearProgress from "@mui/material/LinearProgress"
-
 import { Article, Navbar } from '../components/base'
+import ReactPaginate from "react-paginate";
 
 
 const ArticlePage = () => {
+ 
   const [articles, setArticles] = useState([]);
 	useEffect(() => {
 		const getArticles = async () => {
@@ -21,10 +19,30 @@ const ArticlePage = () => {
 			setArticles(response.data.articles);
 		};
 		getArticles();
-	}, []);
-  const size =10
-  const items = articles.slice(0, size)
-  console.log(items)
+	}, []);  
+  const [pageNumber, setPageNumber] = useState(0)
+  const articlesPerPage = 10
+  const pagesVisited = pageNumber * articlesPerPage
+
+  const displayArticles = articles.slice(pagesVisited, pagesVisited + articlesPerPage)
+    .map((a) =>{
+      return (
+        <Article 
+              author ={a.author}
+              title={a.title}
+              urlToImage={a.urlToImage}
+              description={a.description}
+              url ={a.url}
+              
+            />
+      )
+  })
+  const pageCount = Math.ceil(articles.length/ articlesPerPage)
+
+  const changePage = ({selected}) => {
+    setPageNumber(selected)
+  }
+
   return (
     <div>
       <Navbar/>
@@ -53,24 +71,18 @@ const ArticlePage = () => {
 
         <div className="budgetme-blog-container-groupB">
 
-        { (articles !== []) ?  items.map((a)=>{
-          return (
-
-            <Article 
-              author ={a.author}
-              title={a.title}
-              urlToImage={a.urlToImage}
-              description={a.description}
-              url ={a.url}
-              
+            {displayArticles}
+            <ReactPaginate
+              previousLabel={"prev"}
+              nextLabel={"next"}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              containerClassName={"paginationBttns"}
+              previousLinkClassName={"previousBttn"}
+              nextLinkClassName={"nextBttn"}
+              disabledClassName={"paginationDisabled"}
+              activeClassName = {"paginationActive"}
             />
-          )
-        }):
-          (<Box sx={{ width: '100%' }}>
-            <LinearProgress />
-          </Box>)
-        }
-  
         </div>
       
       </div>
