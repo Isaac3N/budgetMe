@@ -23,7 +23,7 @@ class JWTAuthentication(authentication.BaseAuthentication):
 
         except jwt.DecodeError as identifier:
             raise exceptions.AuthenticationFailed(
-                'Your token is invalid,login')
+                'Your token is invalid, login')
 
         except jwt.ExpiredSignatureError as identifier:
             raise exceptions.AuthenticationFailed(
