@@ -3,7 +3,6 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from .serializers import IncomeSerializer
 from .models import Income
 from rest_framework import permissions
-from .permissions import IsOwner
 
 
 class IncomeListAPIView(ListCreateAPIView):
@@ -20,7 +19,7 @@ class IncomeListAPIView(ListCreateAPIView):
 
 class IncomeDetailAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = IncomeSerializer
-    permission_classes = (permissions.IsAuthenticated, IsOwner,)
+    permission_classes = (permissions.IsAuthenticated,)
     queryset = Income.objects.all()
     lookup_field = "id"
 
