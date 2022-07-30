@@ -1,5 +1,3 @@
-import email
-from django.forms import ValidationError
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
@@ -7,7 +5,7 @@ from django.contrib.auth.models import User
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
         max_length=65, min_length=6, write_only=True)
-    email = serializers.EmailField(max_length=255, min_length=4),
+    email = serializers.EmailField(max_length=255, min_length=4)
     username = serializers.CharField(max_length=255, min_length=2)
 
     class Meta:
@@ -16,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
                   ]
 
     def validate(self, attrs):
-        email = attrs.get('email', '')
+        email = attrs.get('email')
         if User.objects.filter(email=email).exists():
             raise serializers.ValidationError(
                 {'email': ('Email is already in use')})
