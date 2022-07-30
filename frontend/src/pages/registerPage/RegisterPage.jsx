@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../../components/base'
 import { register } from '../../context/actions/register'
 
@@ -18,6 +18,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {InputAdornment, IconButton } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { GlobalContext } from '../../context/Provider';
 
 
 
@@ -40,6 +41,8 @@ const theme = createTheme({
 
 
 const RegisterPage=()=> {
+
+    const authDispatch  = useContext(GlobalContext)
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -49,8 +52,19 @@ const RegisterPage=()=> {
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
     const formValid = !email?.length || !username?.length || !password?.length 
-
     console.log([("username", username), ("password", password), ("email", email)])
+
+    const form = {
+        "username": username,
+        "email": email,
+        "password": password,
+    }
+
+    const onSubmit= () => {
+        register(form)(authDispatch)
+        
+    }
+
 
     useEffect(()=>{
         register()
@@ -143,7 +157,9 @@ const RegisterPage=()=> {
                             )
                           }}
                     />
-                    <Button disabled={formValid}
+                    <Button 
+                        onClick={onSubmit}
+                        disabled={formValid}
                         type="submit"
                         fullWidth
                         variant="contained"

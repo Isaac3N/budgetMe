@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # CORS WHITELIST
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
-    "http://172.20.10.3:3000"
+    "http://172.20.10.5:3000"
 ]
 
 CORS_ORIGIN_REGEX_WHITELIST = [

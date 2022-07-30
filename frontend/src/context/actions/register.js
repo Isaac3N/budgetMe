@@ -1,8 +1,8 @@
 import axiosInstance from "../../helpers/axios";
 
-export const register = () => {
+export const register = (form) => (dispatch) => {
 	axiosInstance
-		.post("http://127.0.0.1:8000/api/auth/register/")
+		.post("auth/register/", form)
 		.then((res) => console.log("res", res))
 		.catch((err) => console.log("e", err));
 };
