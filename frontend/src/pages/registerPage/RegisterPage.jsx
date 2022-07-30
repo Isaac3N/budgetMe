@@ -48,6 +48,8 @@ const RegisterPage=()=> {
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
+    const formValid = !email?.length || !username?.length || !password?.length 
+
     console.log([("username", username), ("password", password), ("email", email)])
 
     useEffect(()=>{
@@ -141,12 +143,12 @@ const RegisterPage=()=> {
                             )
                           }}
                     />
-                    <Button
+                    <Button disabled={formValid}
                         type="submit"
                         fullWidth
                         variant="contained"
                         style={{ color: '#FFFFFF'}}
-                        sx={{ mt: 5, mb: 2 }}
+                        sx={{ mt: 7, mb: 2 }}
                     >
                         Sign Up
                     </Button>

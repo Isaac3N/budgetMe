@@ -44,6 +44,8 @@ const LoginPage=()=> {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
+
+  const formValid = !username?.length || !password?.length 
     
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -116,7 +118,7 @@ const LoginPage=()=> {
                             )
                           }}
                     />
-                <Button
+                <Button disabled={formValid}
                 type="submit"
                 fullWidth
                 variant="contained"
