@@ -30,8 +30,8 @@ const Navbar = () => {
         </div>
       </div>
       <div className="budgetme-navbar-sign">
-        <p>Sign in</p>
-        <button type='button'>Sign Up</button>
+        <p><Link to={"/login"}> Sign in</Link></p>
+        <button type='button'><Link to={"/register"}>Sign Up</Link> </button>
       </div>
       <div className="budgetme-navbar-menu">
         {
@@ -43,8 +43,8 @@ const Navbar = () => {
             <div className="budgetme-navbar-menu-container-links">
               <MenuItems/>
               <div className="budgetme-navbar-menu-container-links-sign">
-                <p>Sign in</p>
-                <button type='button'>Sign Up</button>
+                <p><Link to={"/login"}> Sign in</Link></p>
+                <button type='button'><Link to={"/register"}>Sign Up</Link> </button>
               </div>
             </div>
           </div>
