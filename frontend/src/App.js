@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
-import ArticlePage from "./pages/ArticlePage";
-import LandingPage from "./pages/LandingPage";
+import ArticlePage from "./pages/articlePage/ArticlePage";
+import LandingPage from "./pages/landingPage/LandingPage";
 import { Routes, Route } from "react-router-dom";
-import RegisterPage from "./pages/RegisterPage";
-import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/registerPage/RegisterPage";
+import LoginPage from "./pages/loginPage/LoginPage";
 import { GlobalContext } from "./context/Provider";
 
 const App = () => {

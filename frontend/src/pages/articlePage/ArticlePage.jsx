@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import "../components/blog/blog.css"
-import BlogImage from "../assets/blog.webp"
+import "../../components/blog/blog.css"
+import BlogImage from "../../assets/blog.webp"
 import "./article-page.css"
 import axios from "axios"
-import { Article, Navbar } from '../components/base'
+import { Article, Navbar } from "../../components/base"
 import ReactPaginate from "react-paginate";
 
 

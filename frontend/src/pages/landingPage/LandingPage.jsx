@@ -10,7 +10,7 @@ import {
 	Navbar,
 	WhatIsBudgetMe,
 	WhyBudget,
-} from "../components/base"
+} from "../../components/base"
 
 const LandingPage = () => {
   return (
