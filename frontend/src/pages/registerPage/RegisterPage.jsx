@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../../components/base'
-import { register } from '../../context/actions/register'
+import { register } from '../../context/actions/auth/register'
 
 
 import Avatar from '@mui/material/Avatar';
@@ -19,6 +19,7 @@ import {InputAdornment, IconButton } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { GlobalContext } from '../../context/Provider';
+
 
 
 
@@ -43,6 +44,7 @@ const theme = createTheme({
 const RegisterPage=()=> {
 
     const authDispatch  = useContext(GlobalContext)
+    
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
