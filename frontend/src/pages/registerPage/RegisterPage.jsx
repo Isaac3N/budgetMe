@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState} from 'react'
 import { Navbar } from '../../components/base'
 
 
@@ -20,6 +20,8 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { GlobalContext } from '../../context/Provider';
 import axiosInstance from '../../helpers/axios';
+import { useNavigate } from 'react-router-dom';
+
 
 
 
@@ -43,6 +45,8 @@ const theme = createTheme({
 
 
 const RegisterPage=()=> {
+
+    const navigate = useNavigate()
     
     const authDispatch = useContext(GlobalContext)
     
@@ -50,9 +54,6 @@ const RegisterPage=()=> {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-
-    
-    
 
     const register = (form)  => {
         axiosInstance
@@ -65,6 +66,8 @@ const RegisterPage=()=> {
             });
             
     };
+
+    const [data, setData]= ("")
 
 
     const [showPassword, setShowPassword] = useState(false);
@@ -79,10 +82,12 @@ const RegisterPage=()=> {
         "email": email,
         "password": password,
     }
+
     
 
     const onSubmit= () => {
         register(form)(authDispatch)
+        
         
     }
 
@@ -97,25 +102,26 @@ const RegisterPage=()=> {
   
 
   
-    const handleSubmit = (e) => {
+    async function handleSubmit(e){
         
         e.preventDefault();
-        const data = new FormData(e.currentTarget);
-      e.preventDefault();
-      setFormErrors(validate(form));
-      setIsSubmit(true);
-      console.log({
-        email: data.get('email'),
-        password: data.get('password'),
-    });
+        
+      await setFormErrors(validate(form));
+      setIsSubmit(true)
+      
+    
+    
     };
   
     useEffect(() => {
       console.log(formErrors);
       if (Object.keys(formErrors).length === 0 && isSubmit) {
         console.log(form);
+        navigate("../login", {replace: true})
+        
       }
     }, [formErrors]);
+    
     const validate = (values) => {
       const errors = {};
       const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -135,6 +141,7 @@ const RegisterPage=()=> {
       } 
       return errors;
     };
+
 
 
   
@@ -230,6 +237,7 @@ const RegisterPage=()=> {
                     </Typography>
   
                     <Button 
+                         
                         onClick={onSubmit}
                         disabled={formValid}
                         type="submit"
@@ -242,12 +250,12 @@ const RegisterPage=()=> {
                     </Button>
                     <Grid container sx={{mt: 5}}>
                         <Grid item xs >
-                        <Link href={"/"} variant="body2" color='textBottom.main'>
+                        <Link href={"/"} variant="caption" color='textBottom.main'>
                             Home
                         </Link>
                         </Grid>
                         <Grid item>
-                        <Link href={"/login"} variant="body2" color='textBottom.main'>
+                        <Link href={"/login"} variant="caption" color='textBottom.main'>
                             {"Already Have an Account? Sign In!"}
                         </Link>
                         </Grid>
