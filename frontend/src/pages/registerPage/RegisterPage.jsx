@@ -21,6 +21,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { GlobalContext } from '../../context/Provider';
 import axiosInstance from '../../helpers/axios';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 
@@ -54,6 +55,8 @@ const RegisterPage=()=> {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const [data, setData] = useState({})
+
 
     const register = (form)  => {
         axiosInstance
@@ -67,7 +70,14 @@ const RegisterPage=()=> {
             
     };
 
-    const [data, setData]= ("")
+   
+
+    const form = {
+        "username": username,
+        "email": email,
+        "password": password,
+    }
+
 
 
     const [showPassword, setShowPassword] = useState(false);
@@ -77,18 +87,14 @@ const RegisterPage=()=> {
     const formValid = !email?.length || !username?.length || !password?.length 
     console.log([("username", username), ("password", password), ("email", email)])
 
-    const form = {
-        "username": username,
-        "email": email,
-        "password": password,
-    }
+
+
 
     
 
     const onSubmit= () => {
         register(form)(authDispatch)
-
-        
+    
     }
 
     useEffect(()=>{
@@ -97,8 +103,12 @@ const RegisterPage=()=> {
 
 
 
+
+
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
+
+    
   
 
   
@@ -120,7 +130,7 @@ const RegisterPage=()=> {
         navigate("../login", {replace: true})
         
       }
-    }, [formErrors]);
+    }, );
     
     const validate = (values) => {
       const errors = {};
@@ -141,6 +151,8 @@ const RegisterPage=()=> {
       } 
       return errors;
     };
+
+
 
 
 

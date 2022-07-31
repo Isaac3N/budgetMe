@@ -49,6 +49,9 @@ const LoginPage=()=> {
     const navigate = useNavigate()
     
     const authDispatch = useContext(GlobalContext)
+
+    let data = null;
+    let error = null;
     
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -57,15 +60,17 @@ const LoginPage=()=> {
     const login = (form)  => {
         axiosInstance
             .post("auth/login/", form)
-            .then((res) => {
-                console.log(res.data);
+            .then((res, data) => {
+                localStorage.token = res.data.token
+                data =(res.data);
             })
             .catch((err) => {
                 if (err.response) console.log(err.response.data);
             });
-            
-    };
 
+            
+
+    };
 
 
     const [showPassword, setShowPassword] = useState(false);
@@ -84,6 +89,7 @@ const LoginPage=()=> {
 
     const onSubmit= () => {
         login(form)(authDispatch)
+        
 
         
     }
@@ -92,56 +98,22 @@ const LoginPage=()=> {
         login()
     }, [])
 
-
-
-    const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
+    useEffect(()=> {
+      if(data){
+        
+      }
+          
+        
+    }, [data])
   
-
-  
-    async function handleSubmit(e){
+    function handleSubmit(e){
         
         e.preventDefault();
-        
-      await setFormErrors(validate(form));
-      setIsSubmit(true)
-      
-    
-    
+
+        navigate("../", {replace: true})
     };
   
-    useEffect(() => {
-      console.log(formErrors);
-      if (Object.keys(formErrors).length === 0 && isSubmit) {
-        console.log(form);
-        navigate("../login", {replace: true})
-        
-      }
-    }, [formErrors]);
     
-    const validate = (values) => {
-      const errors = {};
-      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-      if (!values.username) {
-        errors.username = "Username is required!";
-      }
-      if (!values.email) {
-        errors.email = "Email is required!";
-      } else if (!regex.test(values.email)) {
-        errors.email = "This is not a valid email format!";
-       } else if(values.email)
-
-      if (!values.password) {
-        errors.password = "Password is required";
-      } else if (values.password.length < 6) {
-        errors.password = "Password must be more than 6 characters";
-      } 
-      return errors;
-    };
-
-
-
-  
 
     return (
         <div className='gradient-bg'>
@@ -160,9 +132,6 @@ const LoginPage=()=> {
                     <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
                     <LockOutlinedIcon />
                     </Avatar>
-                    <Typography component="h1" variant="h5">
-                    Sign In
-                    </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                     <TextField
                         
@@ -179,9 +148,8 @@ const LoginPage=()=> {
                         autoComplete="username"
                         autoFocus
                     />
-                    <Typography variant="caption" color='error.main' display="block" gutterBottom>
-                        {formErrors.username}
-                    </Typography>
+      
+
 
                     <TextField
                         margin="normal"
@@ -210,9 +178,7 @@ const LoginPage=()=> {
                             )
                           }}
                     />
-                    <Typography variant="caption" color='error.main' display="block" gutterBottom>
-                        {formErrors.password}
-                    </Typography>
+      
   
                     <Button 
                          

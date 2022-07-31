@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import RegisterPage from "./pages/registerPage/RegisterPage";
 import LoginPage from "./pages/loginPage/LoginPage";
 import { GlobalContext } from "./context/Provider";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 const App = () => {
 	return (
@@ -15,6 +16,7 @@ const App = () => {
 				<Route path="/articles" element={<ArticlePage />} />
 				<Route path="/register" element={<RegisterPage />} />
 				<Route path="/login" element={<LoginPage />} />
+				<Route path="/dashboard" element={<Dashboard />} />
 			</Routes>
 		</GlobalContext.Provider>
 	);
