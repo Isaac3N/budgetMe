@@ -1,4 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState} from 'react'
+import { Navbar } from '../../components/base'
+
+
+
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -10,12 +14,13 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {  Navbar } from "../../components/base"
 
 import {InputAdornment, IconButton } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-
+import { GlobalContext } from '../../context/Provider';
+import axiosInstance from '../../helpers/axios';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -37,61 +42,148 @@ const theme = createTheme({
       },
   });
 
+
+
 const LoginPage=()=> {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
 
-  const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () => setShowPassword(!showPassword);
-  const handleMouseDownPassword = () => setShowPassword(!showPassword);
-
-  const formValid = !username?.length || !password?.length 
+    const navigate = useNavigate()
     
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+    const authDispatch = useContext(GlobalContext)
+    
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
-  return (
-    <div className="gradient-bg">
-        <ThemeProvider theme={theme}>
-            <Navbar/>
-        <Container component="main" maxWidth="xs">
-            <CssBaseline />
-            <Box
-            sx={{
-                marginTop: 8,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-            }}
-            >
-            <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
-                <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-                Sign in
-            </Typography>
-            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="text"
-                label="Username"
-                name="username"
-                value={username|| ""}
-                onChange={(e) => {
-                    setUsername(e.target.value);
-                }}
-                autoComplete="username"
-                autoFocus
-                />
-                <TextField
+
+    const login = (form)  => {
+        axiosInstance
+            .post("auth/login/", form)
+            .then((res) => {
+                console.log(res.data);
+            })
+            .catch((err) => {
+                if (err.response) console.log(err.response.data);
+            });
+            
+    };
+
+
+
+    const [showPassword, setShowPassword] = useState(false);
+    const handleClickShowPassword = () => setShowPassword(!showPassword);
+    const handleMouseDownPassword = () => setShowPassword(!showPassword);
+
+    const formValid = !username?.length || !password?.length 
+    console.log([("username", username), ("password", password), ])
+
+    const form = {
+        "username": username,
+        "password": password,
+    }
+
+    
+
+    const onSubmit= () => {
+        login(form)(authDispatch)
+
+        
+    }
+
+    useEffect(()=>{
+        login()
+    }, [])
+
+
+
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
+  
+
+  
+    async function handleSubmit(e){
+        
+        e.preventDefault();
+        
+      await setFormErrors(validate(form));
+      setIsSubmit(true)
+      
+    
+    
+    };
+  
+    useEffect(() => {
+      console.log(formErrors);
+      if (Object.keys(formErrors).length === 0 && isSubmit) {
+        console.log(form);
+        navigate("../login", {replace: true})
+        
+      }
+    }, [formErrors]);
+    
+    const validate = (values) => {
+      const errors = {};
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+      if (!values.username) {
+        errors.username = "Username is required!";
+      }
+      if (!values.email) {
+        errors.email = "Email is required!";
+      } else if (!regex.test(values.email)) {
+        errors.email = "This is not a valid email format!";
+       } else if(values.email)
+
+      if (!values.password) {
+        errors.password = "Password is required";
+      } else if (values.password.length < 6) {
+        errors.password = "Password must be more than 6 characters";
+      } 
+      return errors;
+    };
+
+
+
+  
+
+    return (
+        <div className='gradient-bg'>
+            <ThemeProvider  theme={theme}>
+                <Navbar/>
+                <Container component="main" maxWidth="xs">
+                <CssBaseline />
+                <Box
+                    sx={{
+                    marginTop: 8,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    }}
+                >
+                    <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+                    <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                    Sign In
+                    </Typography>
+                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                    <TextField
+                        
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="text"
+                        label="Username"
+                        name="username"
+                        value={username|| ""}
+                        onChange={(e) => {
+                            setUsername(e.target.value);
+                        }}
+                        autoComplete="username"
+                        autoFocus
+                    />
+                    <Typography variant="caption" color='error.main' display="block" gutterBottom>
+                        {formErrors.username}
+                    </Typography>
+
+                    <TextField
                         margin="normal"
                         required
                         fullWidth
@@ -104,7 +196,7 @@ const LoginPage=()=> {
                         type={showPassword ? "text" : "password"}
                         id="password"
                         autoComplete="current-password"
-                        InputProps={{ // <-- This is where the toggle button is added.
+                        InputProps={{ 
                             endAdornment: (
                               <InputAdornment position="end">
                                 <IconButton
@@ -118,34 +210,41 @@ const LoginPage=()=> {
                             )
                           }}
                     />
-                <Button disabled={formValid}
-                type="submit"
-                fullWidth
-                variant="contained"
-                style={{ color: '#FFFFFF'}}
-                sx={{ mt: 5, mb: 2 }}
-                >
-                Sign In
-                </Button>
-                <Grid container>
-                <Grid item xs>
-                    <Link href={"/"} variant="body2" color='textBottom.main'>
-                    Home
-                    </Link>
-                </Grid>
-                <Grid item>
-                    <Link href={"/register"} variant="body2" color='textBottom.main'>
-                    {"Don't have an account? Sign Up"}
-                    </Link>
-                </Grid>
-                </Grid>
-            </Box>
-            </Box>
-        </Container>
-        </ThemeProvider>
-    
-    </div>
+                    <Typography variant="caption" color='error.main' display="block" gutterBottom>
+                        {formErrors.password}
+                    </Typography>
+  
+                    <Button 
+                         
+                        onClick={onSubmit}
+                        disabled={formValid}
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        style={{ color: '#FFFFFF'}}
+                        sx={{ mt: 7, mb: 2 }}
+                    >
+                        Sign In
+                    </Button>
+                    <Grid container sx={{mt: 5}}>
+                        <Grid item xs >
+                        <Link href={"/"} variant="caption" color='textBottom.main'>
+                            Home
+                        </Link>
+                        </Grid>
+                        <Grid item>
+                        <Link href={"/register"} variant="caption" color='textBottom.main'>
+                            {"Do not have an Account? Sign Up!"}
+                        </Link>
+                        </Grid>
+                    </Grid>
+                    </Box>
+                </Box>
+                </Container>
+            </ThemeProvider>
+        </div>
 
-  );
-}
-export default LoginPage;
+    );
+    }
+
+export default LoginPage

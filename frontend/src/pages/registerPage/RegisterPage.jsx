@@ -87,7 +87,7 @@ const RegisterPage=()=> {
 
     const onSubmit= () => {
         register(form)(authDispatch)
-        
+
         
     }
 
