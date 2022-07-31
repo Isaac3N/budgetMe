@@ -4,13 +4,14 @@ import ArticlePage from "./pages/articlePage/ArticlePage";
 import LandingPage from "./pages/landingPage/LandingPage";
 import { Routes, Route } from "react-router-dom";
 import RegisterPage from "./pages/registerPage/RegisterPage";
-import LoginPage from "./pages/loginPage/LoginPage";
-import { GlobalContext } from "./context/Provider";
+
+import { GlobalProvider } from "./context/Provider";
 import Dashboard from "./pages/dashboard/Dashboard";
+import LoginPage from "./pages/loginPage/LoginPage";
 
 const App = () => {
 	return (
-		<GlobalContext.Provider className="App">
+		<GlobalProvider className="App">
 			<Routes>
 				<Route path="/" element={<LandingPage />} />
 				<Route path="/articles" element={<ArticlePage />} />
@@ -18,7 +19,7 @@ const App = () => {
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/dashboard" element={<Dashboard />} />
 			</Routes>
-		</GlobalContext.Provider>
+		</GlobalProvider>
 	);
 };
 

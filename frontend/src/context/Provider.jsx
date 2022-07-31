@@ -6,11 +6,12 @@ import authInitialState from "./initialstates/authInitialState"
 export const GlobalContext = createContext({});
 
 export const GlobalProvider = ({children}) => {
-    const [authDispatch, authState] = useReducer(auth, authInitialState)
+    const [authState, authDispatch] = useReducer(auth, authInitialState);
     return (
         <GlobalContext.Provider value={
             {authDispatch, authState}
-        }>
+            }
+        >
             {children}
         </GlobalContext.Provider>
     )

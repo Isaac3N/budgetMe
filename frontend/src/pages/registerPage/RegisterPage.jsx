@@ -19,12 +19,9 @@ import {InputAdornment, IconButton } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { GlobalContext } from '../../context/Provider';
-import axiosInstance from '../../helpers/axios';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
-
-
+import { useNavigate, useHistory } from 'react-router-dom';
+import { register } from '../../context/actions/auth/register';
 
 
 const theme = createTheme({
@@ -48,27 +45,34 @@ const theme = createTheme({
 const RegisterPage=()=> {
 
     const navigate = useNavigate()
+    const [fieldErrors, setFieldErrors] = useState({});
     
-    const authDispatch = useContext(GlobalContext)
+    const {
+        authDispatch,
+        authState: {
+          auth: { error, data },
+        },
+      } = useContext(GlobalContext);
     
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const [data, setData] = useState({})
+    useEffect(() => {
+        if (error) {
+          for (const item in error) {
+            setFieldErrors({ ...fieldErrors, [item]: error[item][0] });
+          }
+        }
+      }, [error]);
+
+    useEffect(() => {
+        if (data) {
+            navigate("../login", { replace: true });
+        }
+        }, [data]);
 
 
-    const register = (form)  => {
-        axiosInstance
-            .post("auth/register/", form)
-            .then((res) => {
-                console.log(res.data);
-            })
-            .catch((err) => {
-                if (err.response) console.log(err.response.data);
-            });
-            
-    };
 
    
 
@@ -87,76 +91,20 @@ const RegisterPage=()=> {
     const formValid = !email?.length || !username?.length || !password?.length 
     console.log([("username", username), ("password", password), ("email", email)])
 
-
-
-
     
 
-    const onSubmit= () => {
-        register(form)(authDispatch)
-    
-    }
-
-    useEffect(()=>{
-        register()
-    }, [])
-
-
-
-
-
-    const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
-
-    
-  
+    const onSubmit = () => {
+        setFieldErrors({});
+        register(form)(authDispatch);
+      };
 
   
     async function handleSubmit(e){
         
         e.preventDefault();
-        
-      await setFormErrors(validate(form));
-      setIsSubmit(true)
-      
-    
-    
-    };
-  
-    useEffect(() => {
-      console.log(formErrors);
-      if (Object.keys(formErrors).length === 0 && isSubmit) {
-        console.log(form);
-        navigate("../login", {replace: true})
-        
-      }
-    }, );
-    
-    const validate = (values) => {
-      const errors = {};
-      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-      if (!values.username) {
-        errors.username = "Username is required!";
-      }
-      if (!values.email) {
-        errors.email = "Email is required!";
-      } else if (!regex.test(values.email)) {
-        errors.email = "This is not a valid email format!";
-       } else if(values.email)
-
-      if (!values.password) {
-        errors.password = "Password is required";
-      } else if (values.password.length < 6) {
-        errors.password = "Password must be more than 6 characters";
-      } 
-      return errors;
-    };
-
-
-
-
-
-  
+   
+    }
+ 
 
     return (
         <div className='gradient-bg'>
@@ -195,7 +143,7 @@ const RegisterPage=()=> {
                         autoFocus
                     />
                     <Typography variant="caption" color='error.main' display="block" gutterBottom>
-                        {formErrors.username}
+                        {fieldErrors.username}
                     </Typography>
                     <TextField
                         margin="normal"
@@ -213,7 +161,7 @@ const RegisterPage=()=> {
                         autoFocus
                     />
                     <Typography variant="caption" color='error.main' display="block" gutterBottom>
-                        {formErrors.email}
+                        {fieldErrors.email}
                     </Typography>
                     
 
@@ -245,7 +193,7 @@ const RegisterPage=()=> {
                           }}
                     />
                     <Typography variant="caption" color='error.main' display="block" gutterBottom>
-                        {formErrors.password}
+                        {fieldErrors.password}
                     </Typography>
   
                     <Button 
@@ -278,7 +226,6 @@ const RegisterPage=()=> {
             </ThemeProvider>
         </div>
 
-    );
-    }
+    )};
 
-export default RegisterPage
+export default RegisterPage;

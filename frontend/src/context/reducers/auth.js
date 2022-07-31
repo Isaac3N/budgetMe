@@ -1,11 +1,14 @@
 import {
 	REGISTER_ERROR,
 	REGISTER_SUCESS,
+	LOGIN_SUCCESS,
+	LOGIN_ERROR,
 } from "../../constants/actionTypes.js";
 
 const auth = (state, { payload, type }) => {
 	switch (type) {
 		case REGISTER_SUCESS:
+		case LOGIN_SUCCESS:
 			return {
 				...state,
 				auth: {
@@ -15,6 +18,7 @@ const auth = (state, { payload, type }) => {
 			};
 
 		case REGISTER_ERROR:
+		case LOGIN_ERROR:
 			return {
 				...state,
 				auth: {

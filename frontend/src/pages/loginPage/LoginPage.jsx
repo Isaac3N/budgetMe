@@ -22,8 +22,7 @@ import { GlobalContext } from '../../context/Provider';
 import axiosInstance from '../../helpers/axios';
 import { useNavigate } from 'react-router-dom';
 
-
-
+import { login } from '../../context/actions/auth/login';
 
 
 const theme = createTheme({
@@ -48,72 +47,56 @@ const LoginPage=()=> {
 
     const navigate = useNavigate()
     
-    const authDispatch = useContext(GlobalContext)
-
-    let data = null;
-    let error = null;
+    const {
+        authDispatch,
+        authState: {
+          auth: { error, data },
+        },
+      } = useContext(GlobalContext);
     
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    const form = {
+      "username": username,
+      "password": password,
+  }
 
-    const login = (form)  => {
-        axiosInstance
-            .post("auth/login/", form)
-            .then((res, data) => {
-                localStorage.token = res.data.token
-                data =(res.data);
-            })
-            .catch((err) => {
-                if (err.response) console.log(err.response.data);
-            });
+    console.log(error)
 
-            
 
-    };
+    useEffect(() => {
+      if (data) {
+        if (data.user) {
+          navigate("../dashboard", { replace: true });
+        }
+      }
+    }, [data])
+
+
+    console.log("form", form)
+
 
 
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
-    const formValid = !username?.length || !password?.length 
-    console.log([("username", username), ("password", password), ])
-
-    const form = {
-        "username": username,
-        "password": password,
-    }
+    const loginFormValid = !username?.length || !password?.length 
+    console.log([("username", username), ("password", password),])
 
     
 
-    const onSubmit= () => {
-        login(form)(authDispatch)
-        
+    const onSubmit = () => {
+        login(form)(authDispatch);
+      };
 
-        
-    }
-
-    useEffect(()=>{
-        login()
-    }, [])
-
-    useEffect(()=> {
-      if(data){
-        
-      }
-          
-        
-    }, [data])
   
-    function handleSubmit(e){
-        
+    async function handleSubmit(e){
         e.preventDefault();
-
-        navigate("../", {replace: true})
-    };
-  
-    
+    }
+ 
 
     return (
         <div className='gradient-bg'>
@@ -132,6 +115,9 @@ const LoginPage=()=> {
                     <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
                     <LockOutlinedIcon />
                     </Avatar>
+                    <Typography component="h1" variant="h5">
+                    Sign In
+                    </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                     <TextField
                         
@@ -148,8 +134,10 @@ const LoginPage=()=> {
                         autoComplete="username"
                         autoFocus
                     />
-      
+                    <Typography variant="caption" color='error.main' display="block" gutterBottom>
 
+                    </Typography>
+                    
 
                     <TextField
                         margin="normal"
@@ -178,12 +166,16 @@ const LoginPage=()=> {
                             )
                           }}
                     />
-      
+
+                    <Typography variant="caption" color='error.main' display="block" gutterBottom>
+                          {error?.detail}
+                    </Typography>
+
   
                     <Button 
-                         
+           
                         onClick={onSubmit}
-                        disabled={formValid}
+                        disabled={loginFormValid}
                         type="submit"
                         fullWidth
                         variant="contained"
@@ -192,6 +184,7 @@ const LoginPage=()=> {
                     >
                         Sign In
                     </Button>
+
                     <Grid container sx={{mt: 5}}>
                         <Grid item xs >
                         <Link href={"/"} variant="caption" color='textBottom.main'>
@@ -200,7 +193,7 @@ const LoginPage=()=> {
                         </Grid>
                         <Grid item>
                         <Link href={"/register"} variant="caption" color='textBottom.main'>
-                            {"Do not have an Account? Sign Up!"}
+                            {"Do not have an account? Sign Up!"}
                         </Link>
                         </Grid>
                     </Grid>
@@ -210,7 +203,6 @@ const LoginPage=()=> {
             </ThemeProvider>
         </div>
 
-    );
-    }
+    )};
 
-export default LoginPage
+export default LoginPage;

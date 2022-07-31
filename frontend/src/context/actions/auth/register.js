@@ -5,8 +5,8 @@ import {
 import axiosInstance from "../../../helpers/axios";
 
 export const register = (form) => (dispatch) => {
-	axiosInstance()
-		.post("auth/register/", form)
+	axiosInstance
+		.post("/auth/register/", form)
 		.then((res) => {
 			dispatch({
 				type: REGISTER_SUCESS,
