@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Navbar } from '../../components/base'
-import { register } from '../../context/actions/auth/register'
+
 
 
 import Avatar from '@mui/material/Avatar';
@@ -19,6 +19,7 @@ import {InputAdornment, IconButton } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { GlobalContext } from '../../context/Provider';
+import axiosInstance from '../../helpers/axios';
 
 
 
@@ -42,12 +43,29 @@ const theme = createTheme({
 
 
 const RegisterPage=()=> {
-
-    const authDispatch  = useContext(GlobalContext)
+    
+    const authDispatch = useContext(GlobalContext)
     
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+
+    
+    
+
+    const register = (form)  => {
+        axiosInstance
+            .post("auth/register/", form)
+            .then((res) => {
+                console.log(res.data);
+            })
+            .catch((err) => {
+                if (err.response) console.log(err.response.data);
+            });
+            
+    };
+
 
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -61,26 +79,65 @@ const RegisterPage=()=> {
         "email": email,
         "password": password,
     }
+    
 
     const onSubmit= () => {
         register(form)(authDispatch)
         
     }
 
-
     useEffect(()=>{
         register()
     }, [])
 
 
-    const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
+
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
+  
+
+  
+    const handleSubmit = (e) => {
+        
+        e.preventDefault();
+        const data = new FormData(e.currentTarget);
+      e.preventDefault();
+      setFormErrors(validate(form));
+      setIsSubmit(true);
+      console.log({
         email: data.get('email'),
         password: data.get('password'),
     });
     };
+  
+    useEffect(() => {
+      console.log(formErrors);
+      if (Object.keys(formErrors).length === 0 && isSubmit) {
+        console.log(form);
+      }
+    }, [formErrors]);
+    const validate = (values) => {
+      const errors = {};
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+      if (!values.username) {
+        errors.username = "Username is required!";
+      }
+      if (!values.email) {
+        errors.email = "Email is required!";
+      } else if (!regex.test(values.email)) {
+        errors.email = "This is not a valid email format!";
+       } else if(values.email)
+
+      if (!values.password) {
+        errors.password = "Password is required";
+      } else if (values.password.length < 6) {
+        errors.password = "Password must be more than 6 characters";
+      } 
+      return errors;
+    };
+
+
+  
 
     return (
         <div className='gradient-bg'>
@@ -118,6 +175,9 @@ const RegisterPage=()=> {
                         autoComplete="username"
                         autoFocus
                     />
+                    <Typography variant="caption" color='error.main' display="block" gutterBottom>
+                        {formErrors.username}
+                    </Typography>
                     <TextField
                         margin="normal"
                         required
@@ -129,9 +189,15 @@ const RegisterPage=()=> {
                         onChange={(e) => {
                             setEmail(e.target.value);
                         }}
+
                         autoComplete="email"
                         autoFocus
                     />
+                    <Typography variant="caption" color='error.main' display="block" gutterBottom>
+                        {formErrors.email}
+                    </Typography>
+                    
+
                     <TextField
                         margin="normal"
                         required
@@ -145,7 +211,7 @@ const RegisterPage=()=> {
                         type={showPassword ? "text" : "password"}
                         id="password"
                         autoComplete="current-password"
-                        InputProps={{ // <-- This is where the toggle button is added.
+                        InputProps={{ 
                             endAdornment: (
                               <InputAdornment position="end">
                                 <IconButton
@@ -159,6 +225,10 @@ const RegisterPage=()=> {
                             )
                           }}
                     />
+                    <Typography variant="caption" color='error.main' display="block" gutterBottom>
+                        {formErrors.password}
+                    </Typography>
+  
                     <Button 
                         onClick={onSubmit}
                         disabled={formValid}
@@ -170,8 +240,8 @@ const RegisterPage=()=> {
                     >
                         Sign Up
                     </Button>
-                    <Grid container>
-                        <Grid item xs>
+                    <Grid container sx={{mt: 5}}>
+                        <Grid item xs >
                         <Link href={"/"} variant="body2" color='textBottom.main'>
                             Home
                         </Link>

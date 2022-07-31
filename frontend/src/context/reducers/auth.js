@@ -3,7 +3,7 @@ import {
 	REGISTER_SUCESS,
 } from "../../constants/actionTypes.js";
 
-export const auth = (state, { payload, type }) => {
+const auth = (state, { payload, type }) => {
 	switch (type) {
 		case REGISTER_SUCESS:
 			return {
