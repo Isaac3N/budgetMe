@@ -9,6 +9,7 @@ import { GlobalProvider } from "./context/Provider";
 import Dashboard from "./pages/dashboard/pages/Dashboard";
 import LoginPage from "./pages/loginPage/LoginPage";
 import PrivateRoutes from "./routes/PrivateRoutes";
+import TaskPage from "./pages/dashboard/pages/Tasks/TaskPage";
 
 const App = () => {
 	return (
@@ -19,7 +20,8 @@ const App = () => {
 				<Route path="/register" element={<RegisterPage />} />
 				<Route path="/login" element={<LoginPage />} />
 				<Route element={<PrivateRoutes />}>
-					<Route path="/dashboard" element={<Dashboard />} />
+					<Route exact path="/dashboard" element={<Dashboard />} />
+					<Route path="/dashboard/tasks" element={<TaskPage />} />
 				</Route>
 			</Routes>
 		</GlobalProvider>

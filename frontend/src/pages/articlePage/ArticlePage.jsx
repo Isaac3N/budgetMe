@@ -72,7 +72,7 @@ const ArticlePage = () => {
         <div className="budgetme-blog-container-groupB">
 
             {displayArticles}
-            <ReactPaginate
+            <ReactPaginate 
               previousLabel={"prev"}
               nextLabel={"next"}
               pageCount={pageCount}

@@ -35,8 +35,12 @@
 }
 
 .paginationDisabled a {
-	color: grey;
-	background-color: grey;
+	color: #ff8a71;
+	background-color: #ff8a71;
+}
+
+.budgetme-blog-container-groupB {
+	color: #ff8a71;
 }
 
 @media screen and (max-width: 700px) {

@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     "expenses",
     "income",
     "stats",
-    "tasks",
+    "goals",
 ]
 
 
