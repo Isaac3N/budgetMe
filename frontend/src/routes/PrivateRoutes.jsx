@@ -1,7 +1,4 @@
-
 import { Outlet, Navigate } from 'react-router-dom'
-import { Dashboard } from '../pages/base'
-import isAuthenticated from '../utils/isAuthenticated'
 
 const PrivateRoutes = () => {
     let auth = localStorage.token

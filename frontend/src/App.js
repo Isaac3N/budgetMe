@@ -8,8 +8,6 @@ import RegisterPage from "./pages/registerPage/RegisterPage";
 import { GlobalProvider } from "./context/Provider";
 import Dashboard from "./pages/dashboard/Dashboard";
 import LoginPage from "./pages/loginPage/LoginPage";
-import Protected from "./routes";
-import isAuthenticated from "./utils/isAuthenticated";
 import PrivateRoutes from "./routes/PrivateRoutes";
 
 const App = () => {
