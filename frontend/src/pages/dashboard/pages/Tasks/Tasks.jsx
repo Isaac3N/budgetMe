@@ -19,7 +19,7 @@ const Tasks = () => {
   return (
     <div>
         <Container>
-            <TaskForm/>
+            <TaskForm goals={goals} setGoals={setGoals}/>
             <TaskList goals={goals} setGoals={setGoals}/>
         </Container>
     </div>

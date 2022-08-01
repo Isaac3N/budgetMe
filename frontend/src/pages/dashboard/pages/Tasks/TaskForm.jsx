@@ -4,18 +4,38 @@ import InputGroup from "react-bootstrap/FormControl"
 import FormControl from "react-bootstrap/FormControl"
 import Form from "react-bootstrap/Form"
 import Button from 'react-bootstrap/Button'
+import axiosInstance from '../../../../helpers/axios'
 
-const TaskForm = () => {
-    const [name, setName] = useState("")
+const TaskForm = ({goals, setGoals}) => {
+
+    const [goal, setGoal] = useState("")
     const handleChange = e => {
-        setName(e.target.value)
+        setGoal(e.target.value)
     }
+    const handleSubmit = e => {
+        e.preventDefault()
+        if(!goal){
+            alert("Please provide a value for Your Goals")
+            return
+        }
+        axiosInstance.post("/goals/", {
+            goal: goal
+        }).then ((res)=> {
+            setGoal("")
+            const {data} = res;
+            setGoals([...goals, data]).catch(()=> {
+                alert("Something Went Wrong Please Try Again")
+            })
+        })
+    }
+    
+
 
   return (
-    <Form>
-        <InputGroup className='mb-4 mt-4' onChange={handleChange} value={name}  placeholder='New task'/>
+    <Form onSubmit={handleSubmit}>
+        <FormControl onChange={handleChange} value={goal}  className='mb-4 mt-4' placeholder='New task'/>
   
-        <Button variant="outline-primary mb-4">Add Task</Button>
+        <Button type="submit"  variant="outline-primary mb-4">Add Goal</Button>
 
     </Form>
     
