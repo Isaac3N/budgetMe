@@ -1,34 +1,11 @@
-// import RegisterComponent from "../pages/registerPage/RegisterPage";
-// import LoginComponent from "../pages/loginPage/LoginPage";
-// import DashboardComponent from "../pages/dashboard/Dashboard";
-// import LandingPageComponent from "../pages/landingPage/LandingPage";
+// import { N} from "react-router-dom";
+// import isAuthenticated from "../utils/isAuthenticated";
 
-// const routes = [
-// 	{
-// 		path: "/register",
-// 		component: RegisterComponent,
-// 		title: "Register",
-// 		needsAuth: false,
-// 	},
+// const Protected = ({ user, children }) => {
+// 	if (!isAuthenticated) {
+// 		return <Navigate to="/login" replace />;
+// 	}
 
-// 	{
-// 		path: "/auth/login",
-// 		component: LoginComponent,
-// 		title: "Login",
-// 		needsAuth: false,
-// 	},
-// 	{
-// 		path: "/contacts/create",
-// 		component: DashboardComponent,
-// 		title: "Create Contact",
-// 		needsAuth: true,
-// 	},
-// 	{
-// 		path: "/",
-// 		component: LandingPageComponent,
-// 		title: "Contacts",
-// 		needsAuth: true,
-// 	},
-// ];
-
-// export default routes;
+// 	return children;
+// };
+// export default Protected;

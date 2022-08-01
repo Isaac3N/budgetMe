@@ -20,7 +20,7 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { GlobalContext } from '../../context/Provider';
 
-import { useNavigate, useHistory } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { register } from '../../context/actions/auth/register';
 
 
@@ -74,7 +74,6 @@ const RegisterPage=()=> {
 
 
 
-   
 
     const form = {
         "username": username,
