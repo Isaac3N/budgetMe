@@ -25,6 +25,7 @@ urlpatterns = [
     path('api/expenses/', include('expenses.urls')),
     path('api/income/', include('income.urls')),
     path("api/stats/", include("stats.urls")),
+    path("api/", include("tasks.urls")),
 
 
     path('', schema_view.with_ui('swagger',

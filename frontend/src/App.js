@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import RegisterPage from "./pages/registerPage/RegisterPage";
 
 import { GlobalProvider } from "./context/Provider";
-import Dashboard from "./pages/dashboard/Dashboard";
+import Dashboard from "./pages/dashboard/pages/Dashboard";
 import LoginPage from "./pages/loginPage/LoginPage";
 import PrivateRoutes from "./routes/PrivateRoutes";
 
