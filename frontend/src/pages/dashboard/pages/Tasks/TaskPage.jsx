@@ -4,7 +4,7 @@ import Tasks from './Tasks'
 
 const TaskPage = () => {
   return (
-    <div className='gradient-bg'>
+    <div className='gradient-bg '>
         <Navbar/>
         <Tasks/>
     </div>

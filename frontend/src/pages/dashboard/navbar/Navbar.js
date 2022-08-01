@@ -9,7 +9,7 @@ const MenuItems = () => (
 			<Link to={"/"}>Home</Link>
 		</p>
 		<p>
-			<a href="#what-is-budget-me">Tasks</a>
+			<a href={"/dashboard/goals"}>Goals</a>
 		</p>
 		<p>
 			<a href={"/dashboard"}>Goal Milestones</a>

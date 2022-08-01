@@ -21,7 +21,7 @@ const App = () => {
 				<Route path="/login" element={<LoginPage />} />
 				<Route element={<PrivateRoutes />}>
 					<Route exact path="/dashboard" element={<Dashboard />} />
-					<Route path="/dashboard/tasks" element={<TaskPage />} />
+					<Route path="/dashboard/goals" element={<TaskPage />} />
 				</Route>
 			</Routes>
 		</GlobalProvider>

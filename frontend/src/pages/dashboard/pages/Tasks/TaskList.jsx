@@ -3,9 +3,8 @@ import ListGroup from "react-bootstrap/ListGroup"
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import InputGroup from "react-bootstrap/FormControl"
 
-import Form from "react-bootstrap/Form"
+
 
 import {
 	MdCheckBox,
@@ -27,7 +26,7 @@ const TaskList = ({goals = [], setGoals}) => {
         axiosInstance.delete(`/goals/${id}`)
         .then(()=> {
             const newGoals = goals.filter(t=> {
-                return t.id != id
+                return t.id !== id
             })
             setGoals(newGoals)
         }).catch(()=>{
@@ -64,11 +63,10 @@ const TaskList = ({goals = [], setGoals}) => {
                 </span>
                 <span>{t.goal}</span>
             </div>
-            <span style={{marginRight: "12px", cursor: "pointer"}}>
+            <span className="shrink-0 self-start ml-2 flex items-center justify-center" style={{marginRight: "12px", cursor: "pointer"}}>
                 <MdEdit  style={{
                     cursor: "pointer",
                     marginRight: "12px" 
-                    
                     
                 }} onClick={()=> {
                     setRecord(t)
@@ -82,10 +80,7 @@ const TaskList = ({goals = [], setGoals}) => {
                 }}/>
 
             </span>
-
-
-
-            
+           
         </ListGroup.Item>
     }
     const handleChange= (e) => {
@@ -108,7 +103,7 @@ const TaskList = ({goals = [], setGoals}) => {
             Incomplete Goals ({incompleteGoals.length})
         </div>
         <ListGroup>
-            {incompleteGoals.map(renderListGroupItem)}        
+            {incompleteGoals.map(renderListGroupItem)}    
         </ListGroup>
         <div className="mb-4 mt-4">
             Completed Goals ({completedGoals.length})
