@@ -12,8 +12,10 @@ import DashboardCard07 from '../partials/dashboard/DashboardCard07';
 
 import DashboardCard12 from '../partials/dashboard/DashboardCard12';
 import DashboardCard13 from '../partials/dashboard/DashboardCard13';
+
 import Banner from '../banner/Banner';
 import Navbar  from '../../dashboard/navbar/Navbar';
+import DashboardCard071 from '../partials/dashboard/DashboardCard071';
 
 function Dashboard() {
 
@@ -49,7 +51,7 @@ function Dashboard() {
               
 
               {/* Table (Top Channels) */}
-              <DashboardCard07 />
+              <DashboardCard071 />
 
               {/* Card (Recent Activity) */}
               <DashboardCard12 />

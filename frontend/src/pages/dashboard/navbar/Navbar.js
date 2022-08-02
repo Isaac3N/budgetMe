@@ -12,7 +12,7 @@ const MenuItems = () => (
 			<a href={"/dashboard/goals"}>Goals</a>
 		</p>
 		<p>
-			<a href={"/dashboard"}>Goal Milestones</a>
+			<a href={"/dashboard"}>Dashboard</a>
 		</p>
 		<p>
 			<a href="#FAQ">Expenses</a>

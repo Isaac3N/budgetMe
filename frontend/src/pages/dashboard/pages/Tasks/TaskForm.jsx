@@ -33,7 +33,7 @@ const TaskForm = ({goals, setGoals}) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-        <FormControl onChange={handleChange} value={goal}  className='mb-4 mt-4' placeholder='New task'/>
+        <FormControl onChange={handleChange} value={goal}  className='mb-4 mt-4' placeholder='Set New Goal'/>
   
         <Button type="submit"  variant="outline-primary mb-4">Add Goal</Button>
 
