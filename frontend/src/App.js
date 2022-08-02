@@ -10,6 +10,8 @@ import Dashboard from "./pages/dashboard/pages/Dashboard";
 import LoginPage from "./pages/loginPage/LoginPage";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import TaskPage from "./pages/dashboard/pages/Tasks/TaskPage";
+import IncomeTable from "./pages/dashboard/pages/IncomeTable/IncomeTable";
+import IncomeTablePage from "./pages/dashboard/pages/IncomeTable/IncomeTablePage";
 
 const App = () => {
 	return (
@@ -22,6 +24,7 @@ const App = () => {
 				<Route element={<PrivateRoutes />}>
 					<Route exact path="/dashboard" element={<Dashboard />} />
 					<Route path="/dashboard/goals" element={<TaskPage />} />
+					<Route path="/dashboard/income-table" element={<IncomeTablePage />} />
 				</Route>
 			</Routes>
 		</GlobalProvider>

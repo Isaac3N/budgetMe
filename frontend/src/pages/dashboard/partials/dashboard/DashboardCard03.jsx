@@ -39,7 +39,7 @@ function DashboardCard01() {
   }, [])
 
 
-  const x = Math.round(((totalExpenses.amount__sum) - (totalIncome.amount__sum))/(totalExpenses.amount__sum))
+  const x = Math.round(((totalIncome.amount__sum) - (totalExpenses.amount__sum))/(totalIncome.amount__sum))
   console.log("x", x)
 
  

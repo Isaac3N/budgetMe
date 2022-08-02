@@ -101,7 +101,7 @@ function DashboardCard01() {
         <h2 className="text-lg font-semibold text-slate-800 mb-2">My Total Expenses</h2>
 
         <div className="flex items-start">
-          <div className="text-3xl font-bold text-slate-800 mr-2">${totalExpenses.amount__sum}</div>
+          <div className="text-3xl font-bold text-slate-800 mr-2">#{totalExpenses.amount__sum}</div>
           <div className="text-sm font-semibold text-white px-1.5 bg-red-500 rounded-full">%{x}</div>
         </div>
       </div>
