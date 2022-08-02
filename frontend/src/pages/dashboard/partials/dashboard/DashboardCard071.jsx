@@ -47,7 +47,7 @@ function DashboardCard07() {
   return (
     <div className="col-span-full xl:col-span-12 bg-white shadow-lg rounded-sm border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-slate-800"><Link to={"/"}>My Income</Link></h2>
+        <h2 className="font-semibold text-slate-800"><Link to={"/dashboard/income-table/"}>MyIncome/</Link> <Link to={"/dashboard/income-table/add-income"}>Add Income</Link></h2>
       </header>
       <div className="p-3">
 

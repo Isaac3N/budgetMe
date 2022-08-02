@@ -76,7 +76,7 @@ function IncomeTable() {
     
     <div className="col-span-full xl:col-span-12 bg-white rounded-sm section-padding">
       <header className="px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-slate-800">My Income/ <Link to={"/"}>Add Income</Link></h2>
+        <h2 className="font-semibold text-slate-800">My Income/ <Link to={"/dashboard/income-table/add-income"}>Add Income</Link></h2>
       </header>
 
       <div className="p-3">

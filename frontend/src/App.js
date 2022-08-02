@@ -12,6 +12,7 @@ import PrivateRoutes from "./routes/PrivateRoutes";
 import TaskPage from "./pages/dashboard/pages/Tasks/TaskPage";
 import IncomeTable from "./pages/dashboard/pages/IncomeTable/IncomeTable";
 import IncomeTablePage from "./pages/dashboard/pages/IncomeTable/IncomeTablePage";
+import AddIncome from "./pages/dashboard/pages/IncomeTable/AddIncome";
 
 const App = () => {
 	return (
@@ -25,6 +26,10 @@ const App = () => {
 					<Route exact path="/dashboard" element={<Dashboard />} />
 					<Route path="/dashboard/goals" element={<TaskPage />} />
 					<Route path="/dashboard/income-table" element={<IncomeTablePage />} />
+					<Route
+						path="/dashboard/income-table/add-income"
+						element={<AddIncome />}
+					/>
 				</Route>
 			</Routes>
 		</GlobalProvider>
