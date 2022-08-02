@@ -1,4 +1,4 @@
-from .views import ExpenseSummaryStats, IncomeSummaryStats
+from .views import IncomeSummaryStats, TotalExpenseStats, TotalIncomeStats, ExpenseSummaryStats
 from django.urls import path
 
 urlpatterns = [
@@ -7,4 +7,11 @@ urlpatterns = [
 
     path("income_source_data/", IncomeSummaryStats.as_view(),
          name="income-source-summary"),
+
+    path("total-expense/", TotalExpenseStats.as_view(),
+         name="total-expenses-stats"),
+
+    path("total-income/", TotalIncomeStats.as_view(),
+         name="total-income-stats"),
+
 ]

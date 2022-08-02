@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import axiosInstance from '../../../../helpers/axios';
 
 function DashboardCard07() {
   const [expenses, setExpenses] = useState([])
 
   useEffect(()=> {
-    axiosInstance.get("/expenses/")
+    axiosInstance.get("/expense/")
     .then((res)=> {
         setExpenses(res.data)
     }).catch(()=> {
@@ -45,7 +46,7 @@ function DashboardCard07() {
   return (
     <div className="col-span-full xl:col-span-12 bg-white shadow-lg rounded-sm border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-slate-800">My Expenses</h2>
+        <h2 className="font-semibold text-slate-800"><Link to={"/"}>My Expenses</Link></h2>
       </header>
       <div className="p-3">
 

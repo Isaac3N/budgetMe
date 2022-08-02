@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 import datetime
-from expenses.models import Expense
+from expense.models import Expense
 from rest_framework import status, response
 from django.db.models import Sum
 from income.models import Income
@@ -64,3 +64,17 @@ class IncomeSummaryStats(APIView):
                     incomes, source)
 
         return response.Response({"source_data": final}, status=status.HTTP_200_OK)
+
+
+class TotalIncomeStats(APIView):
+    def get(self, request):
+        income = Income.objects.filter(owner=request.user)
+        total_amount = income.aggregate(Sum("amount"))
+        return response.Response(total_amount)
+
+
+class TotalExpenseStats(APIView):
+    def get(self, request):
+        expenses = Expense.objects.filter(owner=request.user)
+        total_amount = expenses.aggregate(Sum("amount"))
+        return response.Response(total_amount)
