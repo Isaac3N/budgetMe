@@ -47,7 +47,7 @@ function ExpenseTable() {
           <div className="text-center">{t.category}</div>
         </td>
         <td className="p-2">
-          <div className="text-center text-green-500">+ #{t.amount}</div>
+          <div className="text-center text-red-500">- #{t.amount}</div>
         </td>
         <td className="p-2">
           <div className="text-center">{t.date}</div>
