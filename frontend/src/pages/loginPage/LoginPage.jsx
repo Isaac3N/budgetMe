@@ -63,7 +63,6 @@ const LoginPage=()=> {
       "password": password,
   }
 
-    console.log(error)
 
 
     useEffect(() => {
@@ -84,7 +83,6 @@ const LoginPage=()=> {
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
     const loginFormValid = !username?.length || !password?.length 
-    console.log([("username", username), ("password", password),])
 
     
 

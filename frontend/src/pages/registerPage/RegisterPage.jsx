@@ -78,7 +78,7 @@ const RegisterPage=()=> {
     const form = {
         "username": username,
         "email": email,
-        "password": password,
+       "password": password,
     }
 
 
@@ -88,9 +88,6 @@ const RegisterPage=()=> {
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
     const formValid = !email?.length || !username?.length || !password?.length 
-    console.log([("username", username), ("password", password), ("email", email)])
-
-    
 
     const onSubmit = () => {
         setFieldErrors({});
@@ -99,15 +96,13 @@ const RegisterPage=()=> {
 
   
     async function handleSubmit(e){
-        
         e.preventDefault();
-   
     }
  
 
     return (
         <div className='gradient-bg'>
-            <ThemeProvider  theme={theme}>
+            <ThemeProvider theme={theme}>
                 <Navbar/>
                 <Container component="main" maxWidth="xs">
                 <CssBaseline />
