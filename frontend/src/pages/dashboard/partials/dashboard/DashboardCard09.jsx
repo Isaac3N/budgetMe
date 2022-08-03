@@ -8,10 +8,7 @@ import { tailwindConfig } from '../../utils/Utils';
 function DashboardCard09() {
 
   const chartData = {
-    labels: [
-      '12-01-2020', '01-01-2021', '02-01-2021',
-      '03-01-2021', '04-01-2021', '05-01-2021',
-    ],
+
     datasets: [
       // Light blue bars
       {

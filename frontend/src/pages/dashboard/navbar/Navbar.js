@@ -6,16 +6,16 @@ import { Link } from "react-router-dom";
 const MenuItems = () => (
 	<>
 		<p>
-			<Link to={"/"}>Home</Link>
+			<Link to={"/dashboard"}>Dashboard</Link>
 		</p>
 		<p>
-			<a href={"/dashboard/goals"}>Goals</a>
+			<Link to={"/dashboard/goals"}>Goals</Link>
 		</p>
 		<p>
-			<a href={"/dashboard"}>Dashboard</a>
+			<Link to={"/dashboard/income-table"}>Income</Link>
 		</p>
 		<p>
-			<a href="#FAQ">Expenses</a>
+			<Link to={"/dashboard/expense-table"}>Expenses</Link>
 		</p>
 		<p>
 			<Link to={"/articles"}>Articles</Link>

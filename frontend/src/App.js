@@ -10,9 +10,11 @@ import Dashboard from "./pages/dashboard/pages/Dashboard";
 import LoginPage from "./pages/loginPage/LoginPage";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import TaskPage from "./pages/dashboard/pages/Tasks/TaskPage";
-import IncomeTable from "./pages/dashboard/pages/IncomeTable/IncomeTable";
+
 import IncomeTablePage from "./pages/dashboard/pages/IncomeTable/IncomeTablePage";
 import AddIncome from "./pages/dashboard/pages/IncomeTable/AddIncome";
+import ExpenseTablePage from "./pages/dashboard/pages/ExpenseTable/ExpenseTablePage";
+import AddExpense from "./pages/dashboard/pages/ExpenseTable/AddExpense";
 
 const App = () => {
 	return (
@@ -29,6 +31,14 @@ const App = () => {
 					<Route
 						path="/dashboard/income-table/add-income"
 						element={<AddIncome />}
+					/>
+					<Route
+						path="/dashboard/expense-table"
+						element={<ExpenseTablePage />}
+					/>
+					<Route
+						path="/dashboard/expense-table/add-expense"
+						element={<AddExpense />}
 					/>
 				</Route>
 			</Routes>

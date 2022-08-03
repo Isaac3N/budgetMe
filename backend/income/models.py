@@ -11,7 +11,6 @@ class Income(models.Model):
         ('SALARY', 'SALARY'),
         ('BUSINESS', 'BUSINESS'),
         ('SIDE-HUSTLES', 'SIDE-HUSTLES'),
-        ("BILLS", "BILLS"),
         ('OTHERS', 'OTHERS'),
     ]
 

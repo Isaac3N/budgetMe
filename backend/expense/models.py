@@ -13,6 +13,7 @@ class Expense(models.Model):
         ('FOOD', 'FOOD'),
         ('RENT', 'RENT'),
         ('ENTERTAINMENT', 'ENTERTAINMENT'),
+        ("BILLS", "BILLS"),
         ('OTHERS', 'OTHERS')
     ]
 

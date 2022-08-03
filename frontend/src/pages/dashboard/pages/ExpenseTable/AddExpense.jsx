@@ -16,7 +16,7 @@ import 'moment-timezone';
 
 
 
-const AddIncome = () => {
+const AddExpense = () => {
 
     const navigate = useNavigate()
     let defaultDate =  moment().format('YYYY-MM-DD');
@@ -55,11 +55,11 @@ const AddIncome = () => {
     console.log(form)
 
     const onSubmit= e => {
-        axiosInstance.post("/income/", form)
+        axiosInstance.post("/expense/", form)
         .then((res)=> {console.log(res)})
         .catch((err)=> {console.log(err)} )
 
-        navigate("../dashboard/income-table", { replace: true });
+        navigate("../dashboard/Expense-table", { replace: true });
     }
 
     const ariaLabel = { 'aria-label': 'description' };
@@ -86,9 +86,11 @@ const AddIncome = () => {
             
             <div className="inline-block relative  mb-8 ">
                 <select value={source|| ""}  onChange={(e)=> {setSource(e.target.value)}}  className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                    <option>SALARY</option>
-                    <option>BUSINESS</option>
-                    <option>SIDE-HUSTLES</option>
+                    <option>ONLINE_SERVICES</option>
+                    <option>TRAVEL</option>
+                    <option>FOOD</option>
+                    <option>ENTERTAINMENT</option>
+                    <option>RENT</option>
                     <option>OTHERS</option>
                 </select>
             </div>
@@ -98,7 +100,7 @@ const AddIncome = () => {
                 <MobileDatePicker
                 label="Date mobile"
                 inputFormat="yyyy/MM/dd"
-                value={getDate || "2022-07-04"}
+                value={getDate}
                 onChange={handleDateChange}
                 renderInput={(params) => <TextField {...params} />}
                 />
@@ -107,11 +109,11 @@ const AddIncome = () => {
             </div>
             </div>
             <button onClick={onSubmit} class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                Add Income
+                Add Expense
             </button>
         </Form>
     </div>
   )
 }
 
-export default AddIncome
+export default AddExpense

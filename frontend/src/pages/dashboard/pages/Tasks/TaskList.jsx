@@ -95,6 +95,7 @@ const TaskList = ({goals = [], setGoals}) => {
     }
     const completedGoals = goals.filter(t=> t.completed === true )
     const incompleteGoals = goals.filter (t=> t.completed === false )
+    console.log("completed Goals", completedGoals)
 
   return (
     <div>

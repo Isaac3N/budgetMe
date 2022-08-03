@@ -54,10 +54,6 @@ function IncomeTable() {
         </td>
         <td className="p-2">
           <div className="text-center space-x-2 space-y-2">
-          
-            <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-                Edit
-            </button>
             <button onClick={()=> {handleDelete(t.id)}} class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
                 Delete
             </button>
