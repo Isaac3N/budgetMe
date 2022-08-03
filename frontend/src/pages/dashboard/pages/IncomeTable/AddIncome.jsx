@@ -19,12 +19,11 @@ import 'moment-timezone';
 
 
 const AddIncome = () => {
-    
-    const [getDate, setGetDate] = useState("");
-    const [description, setDescription] = useState("")
-    const [amount, setAmount] =  useState("")
-    const [source, setSource] = useState("SALARY")
 
+    const [getDate, setGetDate] = useState("");
+    const [description, setDescription] = useState("No Description")
+    const [amount, setAmount] =  useState("0")
+    const [source, setSource] = useState("SALARY")
 
     const handleSubmit =(e) => {
         e.preventDefault()
@@ -42,6 +41,7 @@ const AddIncome = () => {
     console.log("check", formattedDate)
 
     console.log("date", getDate)
+
 
     const form = {
         "date": date,
@@ -65,7 +65,7 @@ const AddIncome = () => {
         <Navbar/>
         <Form onSubmit={handleSubmit} className='section-padding '>
             <div className="flex w-full text center gap-4 mb-8 sm:w-full md:w-2/3 lg:w-2/3 ">
-            <TextField value={description || ""}  onChange={(e)=> {setDescription(e.target.value)}} fullWidth label="Description" id="Description" />
+            <TextField value={description || ""}  onChange={(e)=> {setDescription(e.target.value)}} fullWidth label="Description(required)" id="Description" />
             </div>
             <div className='mb-8'>
                 <Box
@@ -76,7 +76,7 @@ const AddIncome = () => {
                     noValidate
                     autoComplete="off"
                     >
-                    <Input value={amount|| ""}  onChange={(e)=> {setAmount(e.target.value)}}  placeholder="Amount e.g.(10000)" inputProps={ariaLabel} />
+                    <Input value={amount|| ""} type='number'  onChange={(e)=> {setAmount(e.target.value)}}  placeholder="Amount e.g.(10000)" inputProps={ariaLabel} />
                 </Box>
             </div>
             
