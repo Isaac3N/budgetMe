@@ -7,12 +7,8 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
 import axiosInstance from '../../../../helpers/axios';
-import { FormControl } from '@mui/material';
 import Form from "react-bootstrap/Form"
 import moment from 'moment'
-import MomentUtils from "@date-io/moment";
-
-import Datepicker from 'flowbite-datepicker/Datepicker';
 import "react-datepicker/dist/react-datepicker.css"
 
 import 'moment-timezone';
@@ -23,8 +19,8 @@ import 'moment-timezone';
 
 
 const AddIncome = () => {
-
-    const [getDate, setGetDate] = useState("2022-06-29");
+    
+    const [getDate, setGetDate] = useState("");
     const [description, setDescription] = useState("")
     const [amount, setAmount] =  useState("")
     const [source, setSource] = useState("SALARY")
@@ -35,19 +31,20 @@ const AddIncome = () => {
     }
 
 
+    let date =  moment().format('YYYY-DD-MM');
+    let formattedDate =  moment(date).format('YYYY-DD-MM');
+
     const handleDateChange = (newDate) => {
         setGetDate(newDate);
       };
 
 
-    let date = getDate
-    let formattedDate =  moment(date).format('YYYY-DD-MM');
     console.log("check", formattedDate)
 
     console.log("date", getDate)
 
     const form = {
-        "date": formattedDate,
+        "date": date,
         "description": description,
         "amount": amount,
         "source": source, 
@@ -94,15 +91,15 @@ const AddIncome = () => {
             </div>
             <div className='mb-8'>
             <div className="relative">
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <MobileDatePicker
-                    label="Date mobile"
-                    inputFormat="yyyy/MM/dd"
-                    value={getDate}
-                    onChange={handleDateChange}
-                    renderInput={(params) => <TextField {...params} />}
-                    />
-                </LocalizationProvider>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <MobileDatePicker
+                label="Date mobile"
+                inputFormat="yyyy/MM/dd"
+                value={getDate || formattedDate}
+                onChange={handleDateChange}
+                renderInput={(params) => <TextField {...params} />}
+                />
+            </LocalizationProvider>
                     
             </div>
             </div>
