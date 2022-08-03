@@ -1,9 +1,14 @@
 import React from 'react'
+import Navbar from '../../navbar/Navbar'
+import ExpenseTable from './ExpenseTable'
 
-const ExpenseTablePage = () => {
+const IncomeTablePage = () => {
   return (
-    <div>ExpenseTablePage</div>
+    <div>
+        <Navbar/>
+        <ExpenseTable />
+    </div>
   )
 }
 
-export default ExpenseTablePage
+export default IncomeTablePage

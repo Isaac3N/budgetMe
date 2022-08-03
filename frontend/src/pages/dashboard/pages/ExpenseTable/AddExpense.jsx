@@ -24,7 +24,7 @@ const AddExpense = () => {
     const [getDate, setGetDate] = useState(defaultDate);
     const [description, setDescription] = useState("No Description")
     const [amount, setAmount] =  useState("0")
-    const [source, setSource] = useState("SALARY")
+    const [category, setCategory] = useState("FOOD")
 
     const handleSubmit =(e) => {
         e.preventDefault()
@@ -49,7 +49,7 @@ const AddExpense = () => {
         "date": formattedDate,
         "description": description,
         "amount": amount,
-        "source": source, 
+        "category": category, 
     }
 
     console.log(form)
@@ -59,7 +59,7 @@ const AddExpense = () => {
         .then((res)=> {console.log(res)})
         .catch((err)=> {console.log(err)} )
 
-        navigate("../dashboard/Expense-table", { replace: true });
+        navigate("../dashboard/expense-table", { replace: true });
     }
 
     const ariaLabel = { 'aria-label': 'description' };
@@ -85,12 +85,13 @@ const AddExpense = () => {
             </div>
             
             <div className="inline-block relative  mb-8 ">
-                <select value={source|| ""}  onChange={(e)=> {setSource(e.target.value)}}  className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                <select value={category|| ""}  onChange={(e)=> {setCategory(e.target.value)}}  className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                     <option>ONLINE_SERVICES</option>
                     <option>TRAVEL</option>
                     <option>FOOD</option>
                     <option>ENTERTAINMENT</option>
                     <option>RENT</option>
+                    <option>BILLS</option>
                     <option>OTHERS</option>
                 </select>
             </div>
