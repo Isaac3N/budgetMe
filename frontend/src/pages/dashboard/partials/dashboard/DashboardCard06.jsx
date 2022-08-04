@@ -21,7 +21,7 @@ function DashboardCard06() {
   useEffect(()=> {
     axiosInstance.get("/stats/income_source_data/")
     .then((res)=> {
-        setIncome(res.data)
+        setIncomeData(res.data)
         
     })
     .catch(()=> {
@@ -57,7 +57,7 @@ function DashboardCard06() {
   };
 
   return (
-    <div className="flex flex-col col-span-full sm:col-span-3 xl:col-span-3 bg-white shadow-lg rounded-sm border border-slate-200">
+    <div className="flex flex-col col-span-full sm:col-span-3 xl:col-span-1/2 bg-white shadow-lg rounded-sm border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100">
         <h2 className="font-semibold text-slate-800">How You Earn</h2>
       </header>

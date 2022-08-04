@@ -52,7 +52,7 @@ const TaskList = ({goals = [], setGoals}) => {
     }
 
     const renderListGroupItem = (t) => {
-        return <ListGroup.Item key={t.id} className="d-flex justify-content-between align-items-center">
+        return <ListGroup.Item key={t.id}  className="d-flex justify-content-between align-items-center">
             <div className='d-flex justify-content-center'>
                 <span style={{marginRight: "12px", cursor: "pointer"}} onClick={()=> {
                     handleUpdate(t.id, {
