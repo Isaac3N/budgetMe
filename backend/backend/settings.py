@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 import os
 from pathlib import Path
 import django_on_heroku
-django_on_heroku.settings(locals())
+
 
 load_dotenv()
 
@@ -75,9 +75,9 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -106,6 +106,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 # CORS WHITELIST
+
+CORS_ORIGIN_ALLOW_ALL = True
+
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
     "http://172.20.10.5:3000"
@@ -170,3 +173,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+django_on_heroku.settings(locals())
