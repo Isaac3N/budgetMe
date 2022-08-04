@@ -63,7 +63,7 @@ class IncomeSummaryStats(APIView):
                 final[source] = self.get_amount_for_source(
                     incomes, source)
 
-        return response.Response({"source_data": final}, status=status.HTTP_200_OK)
+        return response.Response({"source": final}, status=status.HTTP_200_OK)
 
 
 class TotalIncomeStats(APIView):

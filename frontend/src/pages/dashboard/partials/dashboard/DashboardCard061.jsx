@@ -1,46 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import DoughnutChart from '../../charts/DoughnutChart';
-
-
-import axiosInstance from '../../../../helpers/axios';
-import Chart from "chart.js/auto";
-import moment from 'moment'
-import { Line } from "react-chartjs-2";
 
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
 
-
-function DashboardCard06() {
-
-  const [incomeData, setIncomeData] = useState([])
-  const [income, setIncome] = useState([])
-
-
-
-  useEffect(()=> {
-    axiosInstance.get("/stats/income_source_data/")
-    .then((res)=> {
-        setIncome(res.data)
-        
-    })
-    .catch(()=> {
-        console.log("Something Went Wrong")
-    })
-  }, [])
-
-
-
-  console.log("income", incomeData)
-
+function DashboardCard061() {
 
   const chartData = {
-    labels: ['Us', 'Italy', 'Other'],
+    labels: ['United States', 'Italy', 'Other'],
     datasets: [
       {
-        label: 'How You Earn',
-        data: [100,100,100]
-        ,
+        label: 'Top Countries',
+        data: [
+          35, 30, 35,
+        ],
         backgroundColor: [
           tailwindConfig().theme.colors.indigo[500],
           tailwindConfig().theme.colors.blue[400],
@@ -59,7 +32,7 @@ function DashboardCard06() {
   return (
     <div className="flex flex-col col-span-full sm:col-span-3 xl:col-span-3 bg-white shadow-lg rounded-sm border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-slate-800">How You Earn</h2>
+        <h2 className="font-semibold text-slate-800">How You Spend</h2>
       </header>
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
@@ -68,4 +41,4 @@ function DashboardCard06() {
   );
 }
 
-export default DashboardCard06;
+export default DashboardCard061;

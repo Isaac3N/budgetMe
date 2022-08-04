@@ -17,11 +17,11 @@ const Tasks = () => {
         })
     }, [])
   return (
-    <div>
-        <Container>
+    <div className='section-padding'>
+
             <TaskForm goals={goals} setGoals={setGoals}/>
             <TaskList goals={goals} setGoals={setGoals}/>
-        </Container>
+
     </div>
   )
 }

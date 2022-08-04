@@ -33,7 +33,6 @@ function ExpenseTable() {
 
 
 
-
   const renderTableGroupItem = (t) => {
     return(
     <tbody className="text-sm font-medium divide-y divide-slate-100">

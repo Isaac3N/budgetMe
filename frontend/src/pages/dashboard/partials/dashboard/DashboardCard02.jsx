@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
-import LineChart from '../../charts/LineChart01';
+
 import axiosInstance from '../../../../helpers/axios';
+import Chart from "chart.js/auto";
+import moment from 'moment'
+import { Line } from "react-chartjs-2";
+
 
 // Import utilities
 import { tailwindConfig, hexToRGB } from '../../utils/Utils';
@@ -9,17 +12,9 @@ import { tailwindConfig, hexToRGB } from '../../utils/Utils';
 function DashboardCard01() {
   const [totalIncome, setTotalIncome] = useState([])
   const [totalExpenses, setTotalExpenses] = useState([])
-  const [income, setIncome] = useState([])
+  const [expense, setExpense] = useState([])
 
-  useEffect(()=> {
-    axiosInstance.get("/income/")
-    .then((res)=> {
-        setIncome(res.data)
-    }).catch(()=> {
-        console.log("Something Went Wrong")
-    })
-  }, [])
-  
+ 
   useEffect(()=> {
     axiosInstance.get("/stats/total-income/")
     .then((res)=> {
@@ -38,6 +33,21 @@ function DashboardCard01() {
     })
   }, [])
 
+  useEffect(()=> {
+    axiosInstance.get("/expense/")
+    .then((res)=> {
+        setExpense(res.data)
+    }).catch(()=> {
+        console.log("Something Went Wrong")
+    })
+  }, [])
+
+  const date = expense.map(a=> 
+    moment(a.date).format('DD-MM-YYYY')
+  )
+
+
+  const expense_amount = expense.map(a=> a.amount)
 
   const x = Math.round(((totalExpenses.amount__sum) - (totalIncome.amount__sum))/(totalExpenses.amount__sum))
   console.log("x", x)
@@ -45,50 +55,20 @@ function DashboardCard01() {
  
 
   const chartData = {
-    labels: [
-      '12-01-2018', '01-01-2021', '02-01-2021',
-      '03-01-2021', '04-01-2021', '05-01-2021',
-      '06-01-2021', '07-01-2021', '08-01-2021',
-      '09-01-2021', '10-01-2021', '11-01-2021',
-      '12-01-2021', '01-01-2022', '02-01-2022',
-      '03-01-2022', '04-01-2022', '05-01-2022',
-      '06-01-2022', '07-01-2022', '08-01-2022',
-      '09-01-2022', '10-01-2022', '11-01-2022',
-      '12-01-2022', '01-01-2024',
-    ],
+    labels: date,
     datasets: [
-      // Indigo line
+
       {
-        data: [
-          732, 610, 610, 504, 504, 504, 349,
-          349, 504, 342, 504, 610, 391, 192,
-          154, 273, 191, 191, 126, 263, 349,
-          252, 423, 622, 470, 772,
-        ],
+        label: "Expenses", 
+        data: expense_amount,
         fill: true,
-        backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.blue[400])}, 0.08)`,
-        borderColor: tailwindConfig().theme.colors.blue[400],
+        backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.red[400])}, 0.08)`,
+        borderColor: tailwindConfig().theme.colors.red[400],
         borderWidth: 2,
         tension: 0,
         pointRadius: 0,
         pointHoverRadius: 3,
-        pointBackgroundColor: tailwindConfig().theme.colors.indigo[500],
-        clip: 20,
-      },
-      // Gray line
-      {
-        data: [
-          532, 532, 532, 404, 404, 314, 314,
-          314, 314, 314, 234, 314, 234, 234,
-          314, 314, 314, 388, 314, 202, 202,
-          202, 202, 314, 720, 642,
-        ],
-        borderColor: tailwindConfig().theme.colors.slate[300],
-        borderWidth: 2,
-        tension: 0,
-        pointRadius: 0,
-        pointHoverRadius: 3,
-        pointBackgroundColor: tailwindConfig().theme.colors.slate[300],
+        pointBackgroundColor: tailwindConfig().theme.colors.red[500],
         clip: 20,
       },
     ],
@@ -108,7 +88,7 @@ function DashboardCard01() {
       {/* Chart built with Chart.js 3 */}
       <div className="grow">
         {/* Change the height attribute to adjust the chart height */}
-        <LineChart data={chartData} width={389} height={128} />
+        <Line data={chartData} width={389} height={128} />
       </div>
     </div>
   );

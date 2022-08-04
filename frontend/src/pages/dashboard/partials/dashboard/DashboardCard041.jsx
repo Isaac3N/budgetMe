@@ -9,36 +9,37 @@ import { Line, Bar } from "react-chartjs-2";
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
 
-function DashboardCard04() {
-
-  const [income, setIncome] = useState([])
+function DashboardCard041() {
 
 
+  const [expense, setExpense] = useState([])
 
   useEffect(()=> {
-    axiosInstance.get("/income/")
+    axiosInstance.get("/expense/")
     .then((res)=> {
-        setIncome(res.data)
+        setExpense(res.data)
     }).catch(()=> {
         console.log("Something Went Wrong")
     })
   }, [])
 
-  const income_date = income.map(a=> 
+
+  const expense_date = expense.map(a=> 
     moment(a.date).format('DD-MM-YYYY')
   )
 
-  const income_amount = income.map(a=> a.amount)
+  const expense_amount = expense.map(a=> a.amount)
+
 
   const chartData = {
-    labels:  income_date,
+    labels: expense_date,
     datasets: [
-      // Light blue bars
+      //Blue bars
       {
-        label: 'Your Income',
-        data: income_amount,
-        backgroundColor: tailwindConfig().theme.colors.green[400],
-        hoverBackgroundColor: tailwindConfig().theme.colors.green[500],
+        label: 'Your Expenses',
+        data: expense_amount,
+        backgroundColor: tailwindConfig().theme.colors.red[500],
+        hoverBackgroundColor: tailwindConfig().theme.colors.red[600],
         barPercentage: 0.66,
         categoryPercentage: 0.66,
       },
@@ -57,4 +58,4 @@ function DashboardCard04() {
   );
 }
 
-export default DashboardCard04;
+export default DashboardCard041;

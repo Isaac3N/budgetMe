@@ -19,6 +19,7 @@ function IncomeTable() {
     })
   }, [])
 
+
   const handleDelete = (id) => {
     axiosInstance.delete(`/income/${id}`)
     .then(()=> {const newIncome = income.filter(t=> {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import ArticlePage from "./pages/articlePage/ArticlePage";
 import LandingPage from "./pages/landingPage/LandingPage";
@@ -15,6 +15,7 @@ import IncomeTablePage from "./pages/dashboard/pages/IncomeTable/IncomeTablePage
 import AddIncome from "./pages/dashboard/pages/IncomeTable/AddIncome";
 import ExpenseTablePage from "./pages/dashboard/pages/ExpenseTable/ExpenseTablePage";
 import AddExpense from "./pages/dashboard/pages/ExpenseTable/AddExpense";
+import Miss from "./pages/dashboard/pages/Chart";
 
 const App = () => {
 	return (
@@ -28,6 +29,7 @@ const App = () => {
 					<Route exact path="/dashboard" element={<Dashboard />} />
 					<Route path="/dashboard/goals" element={<TaskPage />} />
 					<Route path="/dashboard/income-table" element={<IncomeTablePage />} />
+					<Route path="/dashboard/chart" element={<Miss />} />
 					<Route
 						path="/dashboard/income-table/add-income"
 						element={<AddIncome />}

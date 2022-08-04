@@ -7,7 +7,8 @@ import DashboardCard02 from '../partials/dashboard/DashboardCard02';
 import DashboardCard03 from '../partials/dashboard/DashboardCard03';
 import DashboardCard04 from '../partials/dashboard/DashboardCard04';
 import DashboardCard06 from '../partials/dashboard/DashboardCard06';
-
+import DashboardCard061 from '../partials/dashboard/DashboardCard061';
+import DashboardCard041 from '../partials/dashboard/DashboardCard041';
 import DashboardCard07 from '../partials/dashboard/DashboardCard07';
 
 import DashboardCard12 from '../partials/dashboard/DashboardCard12';
@@ -22,7 +23,7 @@ function Dashboard() {
 
 
   return (
-    <div className="flex h-screen overflow-hidden gradient-bg budgetme-blog">
+    <div className="flex h-screen overflow-hidden budgetme-blog">
 
 
       {/* Content area */}
@@ -45,9 +46,9 @@ function Dashboard() {
               {/* Table (Top Channels) */}
               <DashboardCard07 />
               {/* Bar chart (Direct vs Indirect) */}
-              <DashboardCard04 />
+              <DashboardCard04 /><DashboardCard041 />
               {/* Line chart (Real Time Value) */}
-              <DashboardCard06 /> <DashboardCard06 />
+
               
 
               {/* Table (Top Channels) */}
