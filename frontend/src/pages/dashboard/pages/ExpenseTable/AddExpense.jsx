@@ -4,7 +4,6 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
 import axiosInstance from '../../../../helpers/axios';
 import Form from "react-bootstrap/Form"
@@ -12,12 +11,7 @@ import moment from 'moment'
 import "react-datepicker/dist/react-datepicker.css"
 import Typography from '@mui/material/Typography';
 import {useNavigate} from 'react-router-dom'
-import Alert from '@mui/material/Alert';
 
-import IconButton from '@mui/material/IconButton';
-import Collapse from '@mui/material/Collapse';
-import Button from '@mui/material/Button';
-import CloseIcon from '@mui/icons-material/Close';
 
 import 'moment-timezone';
 
@@ -36,7 +30,7 @@ const AddExpense = () => {
     const [fieldErrors, setFieldErrors] = useState({});
     const [error, setError] = useState("")
     const [data, setData] = useState("")
-    const [open, setOpen] = useState(true);
+
 
     const handleSubmit =(e) => {
         e.preventDefault()
@@ -83,9 +77,8 @@ const AddExpense = () => {
         .then((res)=> setData(res.data))
         .catch((err)=> setError(err.response.data))
 
-        // navigate("../dashboard/expense-table", { replace: true });
     }
-    console.log('error', error)
+
 
     const ariaLabel = { 'aria-label': 'description' };
     
