@@ -1,10 +1,11 @@
 import React from 'react'
 import "./what-is-budget-me.css"
 import Feature from '../feature/Feature'
+import { Link } from 'react-router-dom'
 
 const WhatIsBudgetMe = () => {
   return (
-    <div className= "budgetme-what-is-budgetme section-margin" id="wbudgetme">
+    <div className= "budgetme-what-is-budgetme section-margin" id="what-is-budget-me">
       <div className="budgetme-what-is-budgetme-feature">
         <Feature title="What is BudgetMe 🤔 " 
                   text="To become financially independent, you must turn part of your income into capital; 
@@ -15,7 +16,7 @@ const WhatIsBudgetMe = () => {
         <h1 className='gradient-text'>
           Achieve Financial Freedom with BudgetMe
         </h1>
-        <p>Check out our well Curated Articles </p>
+        <Link to={"/articles"}><p>Check out our well Curated Articles </p></Link>
       </div>
       <div className="budgetme-what-is-budgetme-container">
         <Feature title="Data Analysis 📈"  text="Budget Me provides in depth Data Analysis that would help you keep Track of your Earnings and Expenditures. So you can set your budget wisely"/>

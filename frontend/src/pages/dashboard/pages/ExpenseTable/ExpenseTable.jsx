@@ -1,14 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import axiosInstance from '../../../../helpers/axios';
 import { Link } from 'react-router-dom';
-import TextField from '@mui/material/TextField';
+
 
 
 
 function ExpenseTable() {
   const [expense, setExpense] = useState([])
-  const [searchTerm, setSearchTerm] = useState("")
-  const [searchResults, setSearchResults] = useState([])
+  
 
  
   useEffect(()=> {
@@ -77,11 +76,6 @@ function ExpenseTable() {
         <h2 className="font-semibold text-slate-800">My Expense/ <Link to={"/dashboard/expense-table/add-expense"}>Add Expense</Link></h2>
         
       </header>
-      <div>
- 
-        <TextField value={searchTerm || ""} onChange={(e)=> setSearchTerm(e.target.value)} id="standard-basic" type='text' label="Search" variant="standard" />
-
-      </div>
 
       <div className="p-3">
 

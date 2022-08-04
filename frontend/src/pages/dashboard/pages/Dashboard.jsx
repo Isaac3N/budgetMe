@@ -6,8 +6,6 @@ import DashboardCard01 from "../partials/dashboard/DashboardCard01"
 import DashboardCard02 from '../partials/dashboard/DashboardCard02';
 import DashboardCard03 from '../partials/dashboard/DashboardCard03';
 import DashboardCard04 from '../partials/dashboard/DashboardCard04';
-import DashboardCard06 from '../partials/dashboard/DashboardCard06';
-import DashboardCard061 from '../partials/dashboard/DashboardCard061';
 import DashboardCard041 from '../partials/dashboard/DashboardCard041';
 import DashboardCard07 from '../partials/dashboard/DashboardCard07';
 

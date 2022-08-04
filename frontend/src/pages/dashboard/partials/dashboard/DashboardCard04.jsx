@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import BarChart from '../../charts/BarChart01';
-
 import axiosInstance from '../../../../helpers/axios';
 import Chart from "chart.js/auto";
 import moment from 'moment'

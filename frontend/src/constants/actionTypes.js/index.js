@@ -4,3 +4,4 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 export const ADD_INCOME_ERROR = "ADD_INCOME_ERROR";
 export const ADD_INCOME_SUCESS = "ADD_INCOME_SUCESS";
+export const LOGOUT_USER = "LOGOUT_USER";

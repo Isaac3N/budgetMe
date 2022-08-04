@@ -40,7 +40,7 @@ const Navbar = () => {
 			</div>
 			<div className="budgetme-navbar-sign">
 				<button type="button">
-					<Link to={""}>Sign Out</Link>{" "}
+					<Link to={"/"}>Sign Out</Link>{" "}
 				</button>
 			</div>
 			<div className="budgetme-navbar-menu">

@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import LineChart from '../../charts/LineChart01';
 import axiosInstance from '../../../../helpers/axios';
 import moment from 'moment'
 import { Line } from "react-chartjs-2";

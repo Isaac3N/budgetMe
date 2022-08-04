@@ -2,6 +2,7 @@ import React from 'react'
 import "./header.css"
 import people from "../../assets/people.png"
 import budget from "../../assets/budget.png"
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
@@ -14,7 +15,7 @@ const Header = () => {
           BudgetMe is a Opensource Platform that allows users to keep track their Expenditures, Savings, Income, Goals and much more.
         </p>
         <div className="budgetme-header-content-input">
-          <button type='button'>Get Started</button>
+          <button type='button'><Link to={"/register"}>Get Started</Link></button>
         </div>
         <div className="budgetme-header-content-people">
           <img src={people} alt="people" />

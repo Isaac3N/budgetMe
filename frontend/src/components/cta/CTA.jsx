@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import "./cta.css"
 
 const cta = () => {
@@ -9,7 +10,7 @@ const cta = () => {
         <h3>SignUp Today to Start Tracking your Expenses and Budgeting Smartly</h3>
       </div>
       <div className="budgetme-cta-btn">
-        <button type="button"> Get started </button>
+        <button type="button"><Link to={"/register"}>Get Started</Link></button>
       </div>
     </div>
   )

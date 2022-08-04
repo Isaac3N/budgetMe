@@ -6,6 +6,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Link } from 'react-router-dom';
 
 
 
@@ -37,7 +38,7 @@ const faqQuestions = [
 
 const FAQ = () => {
   return (
-    <div className='budgetme-faq section-padding' id="possibility">
+    <div className='budgetme-faq section-padding' id="FAQ">
       <div className='budgetme-faq-image'>
         <img src={PossibilityImage} alt="possibility" />
       </div>
@@ -62,7 +63,7 @@ const FAQ = () => {
 
 
         </div>
-        <h4>Sign Up and Start Tracking Your Expenses now!</h4>
+        <h4><Link to={"/register"}>Sign Up and Start Tracking Your Expenses now!</Link></h4>
       </div>
     </div>
   )
