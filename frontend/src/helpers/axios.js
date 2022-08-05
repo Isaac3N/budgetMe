@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = process.env.REACT_APP_BACKEND_URL;
+const baseURL = "https://budget-friend1.herokuapp.com/api";
 
 console.log("BASE_URL", baseURL);
 

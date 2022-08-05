@@ -1,24 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import Article from '../../components/article/Article'
-import axios from "axios"
-import "./blog.css"
 
+import "./blog.css"
+import { Articles } from '../../pages/articlePage/articles'
 
 const Blog = () => {
   const [articles, setArticles] = useState([]);
-	useEffect(() => {
-		const getArticles = async () => {
-			const response = await axios.get(
-				"https://newsapi.org/v2/everything?q=finance&sortBy=popularity&apiKey=e7b43ea17cb241cbaf20d6049e24c812"
-			);
-			console.log(response);
-			setArticles(response.data.articles);
-		};
-		getArticles();
-	}, []);
+	
   const size =6
  
-  const items = articles.slice(0, size)
+  const items = Articles.slice(0, size)
   console.log(items)
 
   return (

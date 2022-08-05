@@ -2,29 +2,19 @@ import React, {useState, useEffect} from 'react'
 import "../../components/blog/blog.css"
 import BlogImage from "../../assets/blog.webp"
 import "./article-page.css"
-import axios from "axios"
 import { Article, Navbar } from "../../components/base"
 import ReactPaginate from "react-paginate";
+import { Articles } from './articles'
 
 
 const ArticlePage = () => {
  
-  const [articles, setArticles] = useState([]);
-	useEffect(() => {
-		const getArticles = async () => {
-			const response = await axios.get(
-				"https://newsapi.org/v2/everything?q=finance&sortBy=popularity&apiKey=e7b43ea17cb241cbaf20d6049e24c812"
-			);
-			console.log(response);
-			setArticles(response.data.articles);
-		};
-		getArticles();
-	}, []);  
+
   const [pageNumber, setPageNumber] = useState(0)
   const articlesPerPage = 10
   const pagesVisited = pageNumber * articlesPerPage
 
-  const displayArticles = articles.slice(pagesVisited, pagesVisited + articlesPerPage)
+  const displayArticles = Articles.slice(pagesVisited, pagesVisited + articlesPerPage)
     .map((a) =>{
       return (
         <Article 
@@ -37,7 +27,7 @@ const ArticlePage = () => {
             />
       )
   })
-  const pageCount = Math.ceil(articles.length/ articlesPerPage)
+  const pageCount = Math.ceil(Articles.length/ articlesPerPage)
 
   const changePage = ({selected}) => {
     setPageNumber(selected)
@@ -63,7 +53,7 @@ const ArticlePage = () => {
 
       <div className='budgetme-blog-heading section-padding'>
         <h2 className='gradient-text'>
-          Articles Curated with Love 💙 (but mostly newsapi.org)
+          Articles Scraped and Curated with Love 💙 
         </h2>
       </div>
 

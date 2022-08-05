@@ -28,7 +28,7 @@ function DashboardCard07() {
           <div className="text-center">{t.source}</div>
         </td>
         <td className="p-2">
-          <div className="text-center text-green-500">+${t.amount}</div>
+          <div className="text-center text-green-500">+#{t.amount}</div>
         </td>
         <td className="p-2">
           <div className="text-center">{t.date}</div>
