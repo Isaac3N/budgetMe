@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import Article from '../../components/article/Article'
 
 import "./blog.css"
 import { Articles } from '../../pages/articlePage/articles'
 
 const Blog = () => {
-  const [articles, setArticles] = useState([]);
 	
   const size =6
  

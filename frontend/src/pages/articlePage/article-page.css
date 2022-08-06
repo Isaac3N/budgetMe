@@ -7,7 +7,7 @@
 	text-align: center;
 }
 
-.paginationBttns {
+.pagination-buttons {
 	height: 40px;
 	list-style: none;
 	display: flex;
@@ -15,7 +15,7 @@
 	align-items: center;
 }
 
-.paginationBttns a {
+.pagination-buttons a {
 	padding: 5px;
 	margin: 5px;
 	border-radius: 4px;
@@ -24,17 +24,17 @@
 	cursor: pointer;
 }
 
-.paginationBttns a:hover {
+.pagination-buttons a:hover {
 	color: white;
 	background-color: #ff8a71;
 }
 
-.paginationActive a {
+.pagination-active a {
 	color: white;
 	background-color: #ff8a71;
 }
 
-.paginationDisabled a {
+.pagination-disabled a {
 	color: #ff8a71;
 	background-color: #ff8a71;
 }
@@ -49,7 +49,7 @@
 		line-height: 42px;
 	}
 
-	.paginationBttns a {
+	.pagination-buttons a {
 		padding: 2px;
 		margin: 2px;
 	}

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import "../../components/blog/blog.css"
 import BlogImage from "../../assets/blog.webp"
 import "./article-page.css"
@@ -67,11 +67,11 @@ const ArticlePage = () => {
               nextLabel={"next"}
               pageCount={pageCount}
               onPageChange={changePage}
-              containerClassName={"paginationBttns"}
-              previousLinkClassName={"previousBttn"}
-              nextLinkClassName={"nextBttn"}
-              disabledClassName={"paginationDisabled"}
-              activeClassName = {"paginationActive"}
+              containerClassName={"pagination-buttons"}
+              previousLinkClassName={"previous-buttons"}
+              nextLinkClassName={"next-button"}
+              disabledClassName={"pagination-disabled"}
+              activeClassName = {"pagination-active"}
             />
         </div>
       

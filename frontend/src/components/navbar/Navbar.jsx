@@ -7,9 +7,9 @@ import {Link} from "react-router-dom"
 const MenuItems=()=> (
   <>
     <p><Link to={"/"}>Home</Link></p>
-    <p><a href="#what-is-budget-me">What is BudgetMe</a></p>
+    <p><a href={"/#what-is-budget-me"}>What is BudgetMe</a></p>
     <p><a href={"/dashboard"}>Dashboard</a></p>
-    <p><a href="#FAQ">FAQ</a></p>
+    <p><a href={"/#FAQ"}>FAQ </a></p>
     <p><Link to={"/articles"}>Articles</Link></p>
 
   </>

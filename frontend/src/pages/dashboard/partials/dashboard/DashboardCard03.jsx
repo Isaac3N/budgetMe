@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
-
 import axiosInstance from '../../../../helpers/axios';
 import Chart from "chart.js/auto";
 import moment from 'moment'
