@@ -58,11 +58,6 @@ const AddIncome = () => {
       };
 
 
-    console.log("check", formattedDate)
-
-    console.log("date", getDate)
-
-
     const form = {
         "date": formattedDate,
         "description": description,
@@ -70,7 +65,6 @@ const AddIncome = () => {
         "source": source, 
     }
 
-    console.log(form)
 
     const onSubmit= e => {
         axiosInstance.post("/income/", form)

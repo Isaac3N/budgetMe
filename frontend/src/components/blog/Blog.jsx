@@ -9,7 +9,6 @@ const Blog = () => {
   const size =6
  
   const items = Articles.slice(0, size)
-  console.log(items)
 
   return (
     <div className='budgetme-blog section-padding' id="blog">

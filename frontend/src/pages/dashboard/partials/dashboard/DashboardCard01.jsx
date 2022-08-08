@@ -49,13 +49,6 @@ function DashboardCard01() {
     })
   }, [])
 
-
-
-
-
- 
-
-  
   const date = income.map(a=> 
     moment(a.date).format('DD-MM-YYYY')
   )
@@ -65,7 +58,7 @@ function DashboardCard01() {
 
 
   const x = Math.round(((totalIncome.amount__sum) - (totalExpenses.amount__sum))/(totalIncome.amount__sum))
-  console.log("x", x)
+
 
  
 

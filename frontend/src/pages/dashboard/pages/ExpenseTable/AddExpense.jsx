@@ -58,11 +58,6 @@ const AddExpense = () => {
       };
 
 
-    console.log("check", formattedDate)
-
-    console.log("date", getDate)
-
-
     const form = {
         "date": formattedDate,
         "description": description,
@@ -70,7 +65,6 @@ const AddExpense = () => {
         "category": category, 
     }
 
-    console.log(form)
 
     const onSubmit= e => {
         axiosInstance.post("/expense/", form)

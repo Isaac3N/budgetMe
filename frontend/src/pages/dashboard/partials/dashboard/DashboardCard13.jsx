@@ -21,7 +21,7 @@ function DashboardCard13() {
         console.log("Something Went Wrong")
     })
   }, [])
-  console.log("goal", goals)
+
 
   const handleDelete = (id) => {
     axiosInstance.delete(`/goals/${id}`)

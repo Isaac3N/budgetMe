@@ -74,10 +74,6 @@ const LoginPage=()=> {
     }, [data])
 
 
-    console.log("form", form)
-
-
-
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
@@ -98,8 +94,8 @@ const LoginPage=()=> {
 
     return (
         <div className='gradient-bg'>
+            <Navbar/>
             <ThemeProvider  theme={theme}>
-                <Navbar/>
                 <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box

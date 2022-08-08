@@ -13,7 +13,6 @@ function DashboardCard07() {
         console.log("Something Went Wrong")
     })
   }, [])
-  console.log("expenses", expenses)
 
   const renderTableGroupItem = (t) => {
     return(
@@ -41,7 +40,6 @@ function DashboardCard07() {
   const size = 6
 
   const items = expenses.slice(0, size)
-  console.log("items", items)
 
   return (
     <div className="col-span-full xl:col-span-12 bg-white shadow-lg rounded-sm border border-slate-200">

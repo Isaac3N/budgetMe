@@ -15,7 +15,7 @@ function IncomeTable() {
     .then((res)=> {
         setIncome(res.data)
     }).catch(()=> {
-        console.log("Something Went Wrong")
+        alert("Something Went Wrong")
     })
   }, [])
 

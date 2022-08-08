@@ -23,7 +23,7 @@ function DashboardCard13() {
         console.log("Something Went Wrong")
     })
   }, [])
-  console.log("goal", goals)
+
 
   const handleUpdate = async (id, value) => {
     return axiosInstance.patch(`/goals/${id}`, value)
@@ -105,7 +105,7 @@ function DashboardCard13() {
   const size =6
  
   const items = completedGoals.slice(0, size)
-  console.log(items)
+
 
   return (
     <div className="col-span-full xl:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">

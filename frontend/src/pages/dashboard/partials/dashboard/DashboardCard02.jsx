@@ -50,7 +50,7 @@ function DashboardCard01() {
   const expense_amount = expense.map(a=> a.amount)
 
   const x = Math.round(((totalExpenses.amount__sum) - (totalIncome.amount__sum))/(totalExpenses.amount__sum))
-  console.log("x", x)
+
 
  
 
